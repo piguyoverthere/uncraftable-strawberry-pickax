@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "strawberrymc:block/palm_slab"
+    },
+    "type=top": {
+      "model": "strawberrymc:block/palm_slab_top"
+    },
+    "type=double": {
+      "model": "strawberrymc:block/palm_slab_full"
+    }
+  }
+}

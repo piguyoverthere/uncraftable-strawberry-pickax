@@ -1,0 +1,7 @@
+{
+  "parent": "block/fence_inventory",
+  "textures": {
+    "texture": "strawberrymc:block/echowood_planks",
+    "particle": "strawberrymc:block/echowood_planks"
+  }
+}

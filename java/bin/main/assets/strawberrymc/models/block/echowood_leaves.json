@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/echowood_leaves",
+    "particle": "strawberrymc:block/echowood_leaves"
+  }
+}

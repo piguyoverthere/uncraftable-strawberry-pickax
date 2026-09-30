@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#is_overworld",
+  "features": "strawberrymc:radonite_ore",
+  "step": "underground_ores"
+}

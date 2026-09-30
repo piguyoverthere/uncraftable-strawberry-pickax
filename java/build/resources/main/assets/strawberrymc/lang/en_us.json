@@ -76,5 +76,9 @@
   "item.strawberrymc.glowroot_tuber": "Glowroot Tuber",
   "item.strawberrymc.glowroot_tuber_stone": "Glowroot Tuber Stone",
   "item.strawberrymc.glowroot": "Glowroot",
-  "item.strawberrymc.glowroot_dummy_spawner": "Glowroot Dummy Spawner"
+  "item.strawberrymc.glowroot_dummy_spawner": "Glowroot Dummy Spawner",
+  "item.strawberrymc.clover_cluff": "3-leaved Clover",
+  "item.strawberrymc.clover_mat": "Clover Mat",
+  "item.strawberrymc.rare_clover_cluff": "4-Leaved Clover",
+  "item.strawberrymc.lazurite": "Lazurite"
 }

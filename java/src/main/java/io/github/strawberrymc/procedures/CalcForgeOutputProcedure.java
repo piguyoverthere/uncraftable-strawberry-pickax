@@ -13,7 +13,7 @@ public class CalcForgeOutputProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof StrawberrymcModMenus.MenuAccessor _menu0 ? _menu0.getSlots().get(2).getItem() : ItemStack.EMPTY).getItem() == StrawberrymcModItems.FORGE_HAMMER.get()) {
+		if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof StrawberrymcModMenus.MenuAccessor _menu0 ? _menu0.getSlots().get(2).getItem() : ItemStack.EMPTY).getItem() == StrawberrymcModItems.IRON_HAMMER.get()) {
 			if ((entity instanceof Player _plrSlotItem && _plrSlotItem.containerMenu instanceof StrawberrymcModMenus.MenuAccessor _menu2 ? _menu2.getSlots().get(1).getItem() : ItemStack.EMPTY)
 					.is(ItemTags.create(Identifier.parse("minecraft:tools")))) {
 			}

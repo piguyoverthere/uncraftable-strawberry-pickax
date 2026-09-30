@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "strawberrymc:blocks/palm_door",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "strawberrymc:palm_door",
+          "conditions": [
+            {
+              "block": "strawberrymc:palm_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

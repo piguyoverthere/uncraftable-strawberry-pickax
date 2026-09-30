@@ -73,6 +73,7 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> GLOWROOT;
 	public static final DeferredBlock<Block> GLOWROOT_DUMMY_SPAWNER;
 	public static final DeferredBlock<Block> CLOVER_MAT;
+	public static final DeferredBlock<Block> PALM_SEEDLING;
 	public static final DeferredBlock<Block> FERTILE_FARMLAND;
 	static {
 		CHORINE_ORE = register("chorine_ore", ChorineOreBlock::new);
@@ -124,6 +125,7 @@ public class StrawberrymcModBlocks {
 		GLOWROOT = register("glowroot", GlowrootBlock::new);
 		GLOWROOT_DUMMY_SPAWNER = register("glowroot_dummy_spawner", GlowrootDummySpawnerBlock::new);
 		CLOVER_MAT = register("clover_mat", CloverMatBlock::new);
+		PALM_SEEDLING = register("palm_seedling", PalmSeedlingBlock::new);
 		FERTILE_FARMLAND = register("fertile_farmland", FertileFarmlandBlock::new);
 	}
 

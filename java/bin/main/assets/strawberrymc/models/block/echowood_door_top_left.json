@@ -1,0 +1,8 @@
+{
+  "parent": "block/door_top_left",
+  "textures": {
+    "particle": "strawberrymc:block/echowood_door_bottom",
+    "bottom": "strawberrymc:block/echowood_door_bottom",
+    "top": "strawberrymc:block/echowood_door_top"
+  }
+}

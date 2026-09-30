@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "strawberrymc:blocks/stripped_echowood_wood",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "strawberrymc:stripped_echowood_wood"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "strawberrymc:blocks/fertile_farmland",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dirt"
+        }
+      ]
+    }
+  ]
+}

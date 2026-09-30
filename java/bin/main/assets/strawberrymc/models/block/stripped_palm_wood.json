@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/stripped_palm_log",
+    "particle": "strawberrymc:block/stripped_palm_log"
+  }
+}

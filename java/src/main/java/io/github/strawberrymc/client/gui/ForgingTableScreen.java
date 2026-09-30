@@ -55,7 +55,11 @@ public class ForgingTableScreen extends AbstractContainerScreen<ForgingTableMenu
 	public boolean keyPressed(KeyEvent event) {
 		int key = InputConstants.getKey(event).getValue();
 		if (key == 256) {
-			this.minecraft.player.closeContainer();
+			if (this.minecraft != null && this.minecraft.player != null) {
+				this.minecraft.player.closeContainer();
+			} else if (this.minecraft != null) {
+				this.minecraft.setScreen(null);
+			}
 			return true;
 		}
 		return super.keyPressed(event);

@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "particle": "strawberrymc:block/echowood_planks",
+    "bottom": "strawberrymc:block/echowood_planks",
+    "top": "strawberrymc:block/echowood_planks",
+    "side": "strawberrymc:block/echowood_planks"
+  }
+}

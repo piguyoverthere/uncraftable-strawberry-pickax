@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "strawberrymc:radonite_armor"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "strawberrymc:radonite_armor"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "strawberrymc:stripped_palm_wood",
+    "strawberrymc:palm_wood",
+    "strawberrymc:palm_log",
+    "strawberrymc:stripped_palm_log"
+  ]
+}

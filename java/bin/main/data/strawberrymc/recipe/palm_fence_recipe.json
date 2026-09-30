@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aba"
+  ],
+  "key": {
+    "a": "strawberrymc:palm_planks",
+    "b": "minecraft:stick"
+  },
+  "result": {
+    "id": "strawberrymc:palm_fence",
+    "count": 3
+  }
+}

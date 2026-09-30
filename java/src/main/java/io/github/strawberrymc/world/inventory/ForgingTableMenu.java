@@ -111,7 +111,7 @@ public class ForgingTableMenu extends AbstractContainerMenu implements Strawberr
 
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return StrawberrymcModItems.FORGE_HAMMER.get() == stack.getItem();
+				return StrawberrymcModItems.IRON_HAMMER.get() == stack.getItem();
 			}
 		}));
 		this.customSlots.put(3, this.addSlot(new ResourceHandlerSlot(internal, this::setItemInSlot, 3, 97, 34) {

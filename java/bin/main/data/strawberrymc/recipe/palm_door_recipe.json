@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_door",
+  "category": "redstone",
+  "pattern": [
+    "aa",
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": "strawberrymc:palm_planks"
+  },
+  "result": {
+    "id": "strawberrymc:palm_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_fence_gate_wall_open",
+  "textures": {
+    "texture": "strawberrymc:block/palm_planks",
+    "particle": "strawberrymc:block/palm_planks"
+  }
+}

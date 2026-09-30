@@ -85,16 +85,11 @@ public class StrawberrymcModItems {
 	public static final DeferredItem<Item> CLOVER_CLUFF;
 	public static final DeferredItem<Item> CLOVER_MAT;
 	public static final DeferredItem<Item> RARE_CLOVER_CLUFF;
-	public static final DeferredItem<Item> FIBER;
-	public static final DeferredItem<Item> GLOWROOT_PASTE;
-	public static final DeferredItem<Item> COCONUT_OIL;
-	public static final DeferredItem<Item> GREEN_BERYL;
-	public static final DeferredItem<Item> RAW_DIAMOND;
 	public static final DeferredItem<Item> LAZURITE;
-	public static final DeferredItem<Item> IRON_DUST;
-	public static final DeferredItem<Item> FORGE_HAMMER;
+	public static final DeferredItem<Item> PALM_SEEDLING;
 	public static final DeferredItem<Item> FERTILE_FARMLAND;
 	public static final DeferredItem<Item> SULFUR_SLAG;
+	public static final DeferredItem<Item> IRON_HAMMER;
 	static {
 		CHORINE = register("chorine", ChorineItem::new);
 		CHORINE_ORE = block(StrawberrymcModBlocks.CHORINE_ORE);
@@ -164,16 +159,11 @@ public class StrawberrymcModItems {
 		CLOVER_CLUFF = register("clover_cluff", CloverCluffItem::new);
 		CLOVER_MAT = block(StrawberrymcModBlocks.CLOVER_MAT);
 		RARE_CLOVER_CLUFF = register("rare_clover_cluff", RareCloverCluffItem::new);
-		FIBER = register("fiber", FiberItem::new);
-		GLOWROOT_PASTE = register("glowroot_paste", GlowrootPasteItem::new);
-		COCONUT_OIL = register("coconut_oil", CoconutOilItem::new);
-		GREEN_BERYL = register("green_beryl", GreenBerylItem::new);
-		RAW_DIAMOND = register("raw_diamond", RawDiamondItem::new);
 		LAZURITE = register("lazurite", LazuriteItem::new);
-		IRON_DUST = register("iron_dust", IronDustItem::new);
-		FORGE_HAMMER = register("forge_hammer", ForgeHammerItem::new);
+		PALM_SEEDLING = block(StrawberrymcModBlocks.PALM_SEEDLING);
 		FERTILE_FARMLAND = block(StrawberrymcModBlocks.FERTILE_FARMLAND);
 		SULFUR_SLAG = register("sulfur_slag", SulfurSlagItem::new);
+		IRON_HAMMER = register("iron_hammer", IronHammerItem::new);
 	}
 
 	// Start of user code block custom items

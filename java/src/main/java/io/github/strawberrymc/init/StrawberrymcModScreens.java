@@ -1,6 +1,3 @@
-/*
- *	MCreator note: This file will be REGENERATED on each build.
- */
 package io.github.strawberrymc.init;
 
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -9,16 +6,19 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.api.distmarker.Dist;
 
 import io.github.strawberrymc.client.gui.ForgingTableScreen;
+import io.github.strawberrymc.StrawberrymcMod;
 
-@EventBusSubscriber(Dist.CLIENT)
-public class StrawberrymcModScreens {
-	@SubscribeEvent
-	public static void clientLoad(RegisterMenuScreensEvent event) {
-		event.register(StrawberrymcModMenus.GEMCUTTER.get(), GemcutterScreen::new);
-		event.register(StrawberrymcModMenus.FORGING_TABLE.get(), ForgingTableScreen::new);
+@EventBusSubscriber(modid = StrawberrymcMod.MODID, value = Dist.CLIENT)
+public final class StrawberrymcModScreens {
+	private StrawberrymcModScreens() {
 	}
 
 	public interface ScreenAccessor {
 		void updateMenuState(int elementType, String name, Object elementState);
+	}
+
+	@SubscribeEvent
+	public static void registerScreens(RegisterMenuScreensEvent event) {
+		event.register(StrawberrymcModMenus.FORGING_TABLE.get(), ForgingTableScreen::new);
 	}
 }

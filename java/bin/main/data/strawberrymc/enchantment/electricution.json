@@ -1,0 +1,37 @@
+{
+  "description": {
+    "translate": "enchantment.strawberrymc.electricution"
+  },
+  "supported_items": [
+    "strawberrymc:radonite_sword",
+    "minecraft:wooden_sword",
+    "minecraft:stone_sword",
+    "minecraft:netherite_sword",
+    "minecraft:diamond_sword"
+  ],
+  "weight": 10,
+  "max_level": 2,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 6,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 2,
+  "slots": [
+    "any"
+  ],
+  "exclusive_set": [],
+  "effects": {
+    "minecraft:mob_experience": [
+      {
+        "effect": {
+          "type": "minecraft:set",
+          "value": 1
+        }
+      }
+    ]
+  }
+}

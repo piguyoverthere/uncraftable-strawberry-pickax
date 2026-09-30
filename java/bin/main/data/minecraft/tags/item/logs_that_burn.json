@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#strawberrymc:echowood_logs",
+      "required": false
+    },
+    {
+      "id": "#strawberrymc:palm_logs",
+      "required": false
+    }
+  ]
+}

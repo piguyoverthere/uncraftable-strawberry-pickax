@@ -1,0 +1,7 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "strawberrymc:block/placeholder",
+    "particle": "strawberrymc:block/placeholder"
+  }
+}
