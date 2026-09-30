@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "strawberrymc:radonite_pickaxe"
+    "strawberrymc:radonite_pickaxe",
+    "strawberrymc:iron_hammer"
   ]
 }

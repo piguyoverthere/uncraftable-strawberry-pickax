@@ -13,8 +13,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.BlockPos;
 
-import io.github.strawberrymc.procedures.GlowrootTuberGrowProcedure;
-
 public class GlowrootTuberStoneBlock extends Block implements BonemealableBlock {
 	public GlowrootTuberStoneBlock(BlockBehaviour.Properties properties) {
 		super(properties.mapColor(MapColor.STONE).strength(1.5f, 6f).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY).instrument(NoteBlockInstrument.BASEDRUM));
@@ -32,6 +30,5 @@ public class GlowrootTuberStoneBlock extends Block implements BonemealableBlock 
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		GlowrootTuberGrowProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

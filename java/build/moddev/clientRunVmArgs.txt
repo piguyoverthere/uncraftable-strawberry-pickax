@@ -12,7 +12,7 @@ jdk.naming.dns/com.sun.jndi.dns=java.naming
 -Dcom.sun.management.jmxremote.ssl=false
 -Dcom.sun.management.jmxremote.authenticate=false
 
-"-Dlog4j2.configurationFile=/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/build/moddev/clientLog4j2.xml"
+"-Dlog4j2.configurationFile=/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/clientLog4j2.xml"
 -Djava.net.preferIPv6Addresses=system
 -Dneoforge.enableGameTest=true
 -Dforge.logging.markers=REGISTRIES

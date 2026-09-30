@@ -40,7 +40,6 @@ import io.github.strawberrymc.init.StrawberrymcModTabs;
 import io.github.strawberrymc.init.StrawberrymcModItems;
 import io.github.strawberrymc.init.StrawberrymcModEntities;
 import io.github.strawberrymc.init.StrawberrymcModBlocks;
-import io.github.strawberrymc.init.StrawberrymcModMenus;
 
 @Mod("strawberrymc")
 public class StrawberrymcMod {
@@ -56,8 +55,8 @@ public class StrawberrymcMod {
 		StrawberrymcModItems.REGISTRY.register(modEventBus);
 		StrawberrymcModEntities.REGISTRY.register(modEventBus);
 		StrawberrymcModTabs.REGISTRY.register(modEventBus);
-		StrawberrymcModMenus.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
+		io.github.strawberrymc.init.StrawberrymcModMenus.REGISTRY.register(modEventBus);
 		Crystal.init(modEventBus);
 		// End of user code block mod init
 	}

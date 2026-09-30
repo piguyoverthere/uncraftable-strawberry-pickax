@@ -1,0 +1,120 @@
+---- Minecraft Crash Report ----
+// Surprise! Haha. Well, this is awkward.
+
+Time: 2026-09-30 16:36:01
+Description: Initializing game
+
+net.neoforged.fml.ModLoadingException: Loading errors encountered:
+	- Strawberry Minecraft (strawberrymc) encountered an error while dispatching the net.neoforged.neoforge.client.event.RegisterMenuScreensEvent event
+	  java.lang.NullPointerException: Trying to access unbound value: ResourceKey[minecraft:menu / strawberrymc:forging_table]
+
+	at net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:181) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.ModLoader.lambda$postEvent$0(ModLoader.java:330) ~[loader-11.0.15.jar:11.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at net.neoforged.fml.ModList.forEachModInOrder(ModList.java:175) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.ModLoader.postEvent(ModLoader.java:330) ~[loader-11.0.15.jar:11.0] {}
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.gui.screens.MenuScreens.init(MenuScreens.java:77) ~[minecraft-patched-26.1.2.95.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/neoforge@26.1.2.95/net.neoforged.neoforge.client.ClientHooks.initClientHooks(ClientHooks.java:839) ~[neoforge-26.1.2.95-universal.jar:?] {}
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.Minecraft.<init>(Minecraft.java:676) [minecraft-patched-26.1.2.95.jar:?] {}
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.main.Main.main(Main.java:231) [minecraft-patched-26.1.2.95.jar:?] {}
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:181) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.ModLoader.lambda$postEvent$0(ModLoader.java:330) ~[loader-11.0.15.jar:11.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {}
+	at net.neoforged.fml.ModList.forEachModInOrder(ModList.java:175) ~[loader-11.0.15.jar:11.0] {}
+	at net.neoforged.fml.ModLoader.postEvent(ModLoader.java:330) ~[loader-11.0.15.jar:11.0] {}
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.gui.screens.MenuScreens.init(MenuScreens.java:77) ~[minecraft-patched-26.1.2.95.jar:?] {neoforge:access_transformer}
+	at TRANSFORMER/neoforge@26.1.2.95/net.neoforged.neoforge.client.ClientHooks.initClientHooks(ClientHooks.java:839) ~[neoforge-26.1.2.95-universal.jar:?] {}
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.Minecraft.<init>(Minecraft.java:676) ~[minecraft-patched-26.1.2.95.jar:?] {}
+-- Initialization --
+Details:
+	Modules: 
+Stacktrace:
+	at TRANSFORMER/minecraft@26.1.2/net.minecraft.client.main.Main.main(Main.java:231) [minecraft-patched-26.1.2.95.jar:?] {}
+	at net.neoforged.fml.startup.Client.main(Client.java:19) [loader-11.0.15.jar:11.0] {}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?] {}
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 26.1.2
+	Minecraft Version ID: 26.1.2
+	Operating System: Mac OS X (aarch64) version 26.6.2
+	Java Version: 25.0.2, JetBrains s.r.o.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), JetBrains s.r.o.
+	Memory: 139079520 bytes (132 MiB) / 350224384 bytes (334 MiB) up to 2147483648 bytes (2048 MiB)
+	Memory (heap): init: 128MiB, used: 200MiB, committed: 334MiB, max: 2048MiB
+	Memory (non-head): init: 007MiB, used: 142MiB, committed: 144MiB, max: 000MiB
+	CPUs: 8
+	Processor Vendor: Apple Inc.
+	Processor Name: Apple M1
+	Identifier: Apple Inc. Family 0x1b588bb3 Model 0 Stepping 0
+	Microarchitecture: ARM64 SoC: Firestorm + Icestorm
+	Frequency (GHz): 3.20
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 8
+	Graphics card #0 name: Apple M1
+	Graphics card #0 vendor: Apple (0x106b)
+	Graphics card #0 VRAM (MiB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: unknown
+	Memory slot #0 capacity (MiB): 0.00
+	Memory slot #0 clockSpeed (GHz): 0.00
+	Memory slot #0 type: unknown
+	Virtual memory max (MiB): 18432.00
+	Virtual memory used (MiB): 16295.19
+	Swap memory total (MiB): 10240.00
+	Swap memory used (MiB): 9500.75
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 24997.79, total: 233752.44
+	Space in storage for workdir (MiB): available: 24997.79, total: 233752.44
+	JVM Flags: 0 total; 
+	Debug Flags: 0 total; 
+	Launched Version: 26.1.2.95
+	Backend library: LWJGL version 3.4.1+2
+	Backend API: Apple M1 GL version 4.1 Metal - 90.5, Apple
+	Window size: <not initialized>
+	GFLW Platform: cocoa
+	Render Extensions: GL_EXT_texture_filter_anisotropic
+	GL debug messages: <debugging unavailable>
+	Is Modded: Definitely; Client brand changed to 'neoforge'
+	Universe: 404
+	Type: Client
+	Locale: en_US
+	System encoding: UTF-8
+	File encoding: UTF-8
+	CPU: 8x Apple M1
+	Class Processors: 
+		00.00%: neoforge:neoforge_dev_dist_cleaner
+		00.00%: neoforge:computing_frames (marker)
+		00.00%: neoforge:runtime_enum_extender
+		05.48%: neoforge:access_transformer
+		00.14%: neoforge:mixin
+		00.00%: neoforge:simple_processors_default (marker)
+		00.02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.biome.biome
+		00.02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.block.flowerpotblock
+		00.02%: neoforge.coremods:field_to_getter.net.minecraft.world.level.levelgen.structure.structure
+		00.31%: neoforge.coremods:method_redirector
+	Mod List: 
+		minecraft-patched-26.1.2.95.jar                   |Minecraft                     |minecraft                     |26.1.2              |Manifest: NOSIGNATURE
+		neoforge-26.1.2.95-universal.jar                  |NeoForge                      |neoforge                      |26.1.2.95           |Manifest: NOSIGNATURE
+		main                                              |Strawberry Minecraft          |strawberrymc                  |1.0.0               |Manifest: NOSIGNATURE
+	Crash Report UUID: dbf652e8-81d6-4486-a6d1-14728866f7b6
+	FML: 11.0.15
+	NeoForge: 26.1.2.95

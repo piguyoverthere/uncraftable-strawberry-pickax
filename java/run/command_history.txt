@@ -15,3 +15,5 @@
 /
 /locate structure minecraft:end_city
 /tp @s 1984 ~ -864
+/tp @s 0 127 0
+/kill @e[type=minecraft:ender_dragon]
