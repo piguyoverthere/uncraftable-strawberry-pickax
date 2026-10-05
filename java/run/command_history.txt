@@ -15,3 +15,18 @@
 /
 /locate structure minecraft:end_city
 /tp @s 1984 ~ -864
+/place feature strawberrymc:crystal
+/tp @s ~ ~8 ~
+/locate biome strawberrymc:clover_glade
+/tp @s 557 64 375
+/summon tnt
+/summon minecraft:tnt_minecart
+/effect give @s speed infinite 255 true
+/effect give @s minecraft:slow_falling infinite 255 true
+/effect give @s minecraft:jump_boost infinite 255 true
+/effect clear @s minecraft:jump_boost
+/tp @s ~ ~-800 ~
+/effect give @s minecraft:jump_boost infinite 5 true
+/locate structure minecraft:village_desert
+/tp @s -2352 250 2976
+/place structure minecraft:village_desert

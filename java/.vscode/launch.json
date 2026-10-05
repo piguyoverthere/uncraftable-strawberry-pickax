@@ -12,11 +12,11 @@
       "projectName": "java",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/build/moddev/clientRunProgramArgs.txt"
+        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/build/moddev/clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dmcreator%%/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/bin/main"
+        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmcreator%%/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/bin/main"
       ],
       "cwd": "${workspaceFolder}/run",
       "env": {},
@@ -34,11 +34,11 @@
       "projectName": "java",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/build/moddev/serverRunProgramArgs.txt"
+        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/build/moddev/serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dmcreator%%/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax/java/bin/main"
+        "@/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dmcreator%%/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/bin/main"
       ],
       "cwd": "${workspaceFolder}/run",
       "env": {},

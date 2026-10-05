@@ -1,0 +1,7 @@
+{
+  "parent": "block/button",
+  "textures": {
+    "texture": "strawberrymc:block/echowood_planks",
+    "particle": "strawberrymc:block/echowood_planks"
+  }
+}

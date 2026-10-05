@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "strawberrymc:clover_glade",
+  "features": "strawberrymc:clover_cluff_feature",
+  "step": "surface_structures"
+}

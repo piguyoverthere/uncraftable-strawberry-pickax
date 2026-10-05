@@ -1,0 +1,10 @@
+{
+  "values": {
+    "strawberrymc:echowood_leaves": {
+      "chance": 0.3
+    },
+    "strawberrymc:palm_leaves": {
+      "chance": 0.3
+    }
+  }
+}

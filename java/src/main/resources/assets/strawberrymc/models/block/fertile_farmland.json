@@ -1,12 +1,7 @@
 {
-  "parent": "block/cube",
+  "parent": "block/cube_all",
   "textures": {
-    "down": "minecraft:block/dirt",
-    "up": "strawberrymc:block/placeholder",
-    "north": "minecraft:block/dirt",
-    "east": "minecraft:block/dirt",
-    "south": "minecraft:block/dirt",
-    "west": "minecraft:block/dirt",
-    "particle": "minecraft:block/dirt"
+    "all": "strawberrymc:block/placeholder",
+    "particle": "strawberrymc:block/placeholder"
   }
 }

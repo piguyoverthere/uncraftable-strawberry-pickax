@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:dirt"
+          "name": "strawberrymc:fertile_farmland"
         }
       ]
     }

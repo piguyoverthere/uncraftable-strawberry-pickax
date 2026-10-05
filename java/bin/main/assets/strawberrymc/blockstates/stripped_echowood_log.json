@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "strawberrymc:block/stripped_echowood_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "strawberrymc:block/stripped_echowood_log"
+    },
+    "axis=z": {
+      "model": "strawberrymc:block/stripped_echowood_log",
+      "x": 90
+    }
+  }
+}

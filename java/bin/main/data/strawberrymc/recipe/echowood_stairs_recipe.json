@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_stairs",
+  "category": "building",
+  "pattern": [
+    "a  ",
+    "aa ",
+    "aaa"
+  ],
+  "key": {
+    "a": "strawberrymc:echowood_planks"
+  },
+  "result": {
+    "id": "strawberrymc:echowood_stairs",
+    "count": 4
+  }
+}

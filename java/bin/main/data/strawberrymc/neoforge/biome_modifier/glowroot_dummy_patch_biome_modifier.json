@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "features": "strawberrymc:glowroot_dummy_patch",
+  "step": "surface_structures"
+}

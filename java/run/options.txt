@@ -36,7 +36,7 @@ screenEffectScale:1.0
 soundDevice:""
 vignette:false
 weatherRadius:5
-autoJump:false
+autoJump:true
 rotateWithMinecart:false
 operatorItemsTab:false
 autoSuggestions:true

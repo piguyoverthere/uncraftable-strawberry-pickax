@@ -4,6 +4,6 @@
 java.base/java.lang.invoke=ALL-UNNAMED
 --add-exports
 jdk.naming.dns/com.sun.jndi.dns=java.naming
--Dlog4j2.configurationFile=/Users/ericx/uncraftable-strawberry-pickax/java/build/moddev/serverLog4j2.xml
+"-Dlog4j2.configurationFile=/Users/shashankaggarwal/Documents/nonmints 2.0/uncraftable-strawberry-pickax-1/java/build/moddev/serverLog4j2.xml"
 -Djava.net.preferIPv6Addresses=system
 -Dforge.logging.markers=REGISTRIES

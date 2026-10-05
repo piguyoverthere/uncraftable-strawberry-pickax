@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "category": "building",
+  "ingredients": [
+    "#strawberrymc:echowood_logs"
+  ],
+  "result": {
+    "id": "strawberrymc:echowood_planks",
+    "count": 4
+  }
+}

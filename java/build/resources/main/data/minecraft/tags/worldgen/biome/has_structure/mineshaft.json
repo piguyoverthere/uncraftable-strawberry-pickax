@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "strawberrymc:crystal_hollows",
-    "strawberrymc:clover_glades"
+    "strawberrymc:clover_glade",
+    "strawberrymc:crystal_hollows"
   ]
 }

@@ -37,7 +37,6 @@ import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import it.unimi.dsi.fastutil.ints.IntObjectImmutablePair;
 
 import io.github.strawberrymc.init.StrawberrymcModTabs;
-import io.github.strawberrymc.init.StrawberrymcModPotions;
 import io.github.strawberrymc.init.StrawberrymcModItems;
 import io.github.strawberrymc.init.StrawberrymcModEntities;
 import io.github.strawberrymc.init.StrawberrymcModBlocks;
@@ -56,7 +55,6 @@ public class StrawberrymcMod {
 		StrawberrymcModItems.REGISTRY.register(modEventBus);
 		StrawberrymcModEntities.REGISTRY.register(modEventBus);
 		StrawberrymcModTabs.REGISTRY.register(modEventBus);
-		StrawberrymcModPotions.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		Crystal.init(modEventBus);
 		// End of user code block mod init

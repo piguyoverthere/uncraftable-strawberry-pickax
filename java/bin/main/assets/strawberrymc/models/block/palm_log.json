@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "strawberrymc:block/palm_log_top",
+    "up": "strawberrymc:block/palm_log_top",
+    "north": "strawberrymc:block/palm_log",
+    "east": "strawberrymc:block/palm_log",
+    "south": "strawberrymc:block/palm_log",
+    "west": "strawberrymc:block/palm_log",
+    "particle": "strawberrymc:block/palm_log"
+  }
+}

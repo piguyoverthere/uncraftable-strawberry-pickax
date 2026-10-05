@@ -26,7 +26,6 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.GLOWROOT_TUBER.get());
 			tabData.accept(StrawberrymcModItems.CLOVER_CLUFF.get());
 			tabData.accept(StrawberrymcModItems.RARE_CLOVER_CLUFF.get());
-			tabData.accept(StrawberrymcModItems.PLANT_FIBER.get());
 		} else if (tabData.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 			tabData.accept(StrawberrymcModBlocks.CHORINE_ORE.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.CHORINE_BLOCK.get().asItem());
@@ -65,7 +64,7 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModBlocks.GLOWROOT.get().asItem());
 			tabData.accept(StrawberrymcModItems.CLOVER_CLUFF.get());
 			tabData.accept(StrawberrymcModItems.RARE_CLOVER_CLUFF.get());
-			tabData.accept(StrawberrymcModItems.PLANT_FIBER.get());
+			tabData.accept(StrawberrymcModBlocks.PALM_SEEDLING.get().asItem());
 		} else if (tabData.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
 			tabData.accept(StrawberrymcModBlocks.ECHOWOOD_SIGN.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.ECHOWOOD_HANGING_SIGN.get().asItem());
@@ -80,6 +79,7 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.RADONITE_HOE.get());
 			tabData.accept(StrawberrymcModItems.PALM_BOAT.get());
 			tabData.accept(StrawberrymcModItems.PALM_CHEST_BOAT.get());
+			tabData.accept(StrawberrymcModItems.IRON_HAMMER.get());
 		} else if (tabData.getTabKey() == CreativeModeTabs.COMBAT) {
 			tabData.accept(StrawberrymcModItems.RADONITE_SWORD.get());
 			tabData.accept(StrawberrymcModItems.RADONITE_ARMOR_HELMET.get());
