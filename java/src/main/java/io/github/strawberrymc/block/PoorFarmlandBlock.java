@@ -20,7 +20,7 @@ import net.minecraft.core.BlockPos;
 import io.github.strawberrymc.procedures.TrampleFertileFarmlandProcedure;
 import io.github.strawberrymc.procedures.PoorFarmlandFertilizeProcedure;
 
-public class PoorFarmlandBlock extends Block {
+public class PoorFarmlandBlock extends FarmlandBlock {
 
 	public PoorFarmlandBlock(BlockBehaviour.Properties properties) {
 		super(properties.mapColor(MapColor.DIRT).sound(SoundType.GRAVEL).strength(0.6f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
