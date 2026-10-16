@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "particle": "strawberrymc:block/palm_planks",
+    "bottom": "strawberrymc:block/palm_planks",
+    "top": "strawberrymc:block/palm_planks",
+    "side": "strawberrymc:block/palm_planks"
+  }
+}

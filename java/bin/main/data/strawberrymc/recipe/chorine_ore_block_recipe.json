@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": "strawberrymc:chorine"
+  },
+  "result": {
+    "id": "strawberrymc:chorine_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/fence_side",
+  "textures": {
+    "texture": "strawberrymc:block/palm_planks",
+    "particle": "strawberrymc:block/palm_planks"
+  }
+}

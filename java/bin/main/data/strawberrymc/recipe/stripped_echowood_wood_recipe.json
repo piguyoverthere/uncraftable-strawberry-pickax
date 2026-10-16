@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "category": "building",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": "strawberrymc:stripped_echowood_log"
+  },
+  "result": {
+    "id": "strawberrymc:stripped_echowood_wood",
+    "count": 3
+  }
+}

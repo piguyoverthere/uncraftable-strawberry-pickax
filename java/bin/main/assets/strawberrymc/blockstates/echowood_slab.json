@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "strawberrymc:block/echowood_slab"
+    },
+    "type=top": {
+      "model": "strawberrymc:block/echowood_slab_top"
+    },
+    "type=double": {
+      "model": "strawberrymc:block/echowood_slab_full"
+    }
+  }
+}

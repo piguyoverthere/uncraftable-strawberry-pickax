@@ -1,0 +1,47 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:farmland": 2,
+      "minecraft:painting": 1,
+      "minecraft:copper_hoe": 6
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 26584,
+      "minecraft:walk_one_cm": 463,
+      "minecraft:leave_game": 3,
+      "minecraft:mob_kills": 5,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 13292,
+      "minecraft:jump": 4,
+      "minecraft:time_since_death": 13292,
+      "minecraft:drop": 12,
+      "minecraft:sprint_one_cm": 38,
+      "minecraft:open_chest": 1,
+      "minecraft:total_world_time": 24048,
+      "minecraft:fly_one_cm": 192290,
+      "minecraft:crouch_one_cm": 154,
+      "minecraft:sneak_time": 385
+    },
+    "minecraft:dropped": {
+      "strawberrymc:clover_cluff": 1,
+      "minecraft:arrow": 1,
+      "strawberrymc:recovery_pearl": 2,
+      "strawberrymc:rare_clover_cluff": 1,
+      "strawberrymc:glowroot": 3,
+      "minecraft:mutton": 2,
+      "minecraft:brown_wool": 1,
+      "strawberrymc:glowroot_tuber": 1
+    },
+    "minecraft:picked_up": {
+      "minecraft:porkchop": 7,
+      "minecraft:brown_wool": 2,
+      "strawberrymc:recovery_pearl": 2,
+      "minecraft:mutton": 4,
+      "strawberrymc:glowroot": 3,
+      "minecraft:gunpowder": 1,
+      "minecraft:arrow": 2,
+      "minecraft:bone": 2
+    }
+  },
+  "DataVersion": 4790
+}

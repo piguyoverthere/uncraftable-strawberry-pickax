@@ -39,10 +39,4 @@ public class FertileFarmlandBlock extends Block {
 		super.attack(blockstate, world, pos, entity);
 		SulfurParticulateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
-
-	@Override
-	public void fallOn(Level world, BlockState blockstate, BlockPos pos, Entity entity, double distance) {
-		super.fallOn(world, blockstate, pos, entity, distance);
-		TrampleFertileFarmlandProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
-	}
 }

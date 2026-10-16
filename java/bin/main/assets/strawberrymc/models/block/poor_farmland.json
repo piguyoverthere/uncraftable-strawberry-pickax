@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft:block/coarse_dirt",
+    "up": "strawberrymc:block/placeholder",
+    "north": "minecraft:block/coarse_dirt",
+    "east": "minecraft:block/coarse_dirt",
+    "south": "minecraft:block/coarse_dirt",
+    "west": "minecraft:block/coarse_dirt",
+    "particle": "minecraft:block/coarse_dirt"
+  }
+}

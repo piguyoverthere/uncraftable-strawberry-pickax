@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "id": "strawberrymc:dendrite_crystal"
+    },
+    "title": {
+      "translate": "advancements.crystal_hollows_here.title"
+    },
+    "description": {
+      "translate": "advancements.crystal_hollows_here.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crystal_hollows_here_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "strawberrymc:dendrite_crystal",
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "minecraft:adventure/adventuring_time"
+}

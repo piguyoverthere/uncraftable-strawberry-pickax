@@ -14,6 +14,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.client.renderer.Sheets;
 
 import java.util.function.Function;
@@ -75,7 +76,7 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> CLOVER_MAT;
 	public static final DeferredBlock<Block> FERTILE_FARMLAND;
 	public static final DeferredBlock<Block> POOR_FARMLAND;
-	public static final DeferredBlock<Block> FARMLAND_STRAWBERRY;
+	public static final DeferredBlock<Block> USED_FARMLAND;
 	static {
 		CHORINE_ORE = register("chorine_ore", ChorineOreBlock::new);
 		CHORINE_BLOCK = register("chorine_block", ChorineBlockBlock::new);
@@ -128,7 +129,7 @@ public class StrawberrymcModBlocks {
 		CLOVER_MAT = register("clover_mat", CloverMatBlock::new);
 		FERTILE_FARMLAND = register("fertile_farmland", FertileFarmlandBlock::new);
 		POOR_FARMLAND = register("poor_farmland", PoorFarmlandBlock::new);
-		FARMLAND_STRAWBERRY = register("farmland_strawberry", FarmlandStrawberryBlock::new);
+		USED_FARMLAND = register("used_farmland", UsedFarmlandBlock::new);
 	}
 
 	// Start of user code block custom blocks

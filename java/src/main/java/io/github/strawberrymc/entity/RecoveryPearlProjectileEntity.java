@@ -1,6 +1,7 @@
 package io.github.strawberrymc.entity;
 
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -79,7 +80,13 @@ public class RecoveryPearlProjectileEntity extends AbstractArrow implements Item
 	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-		RecoveryPearlFetchProcedure.execute(entityHitResult.getEntity(), this.getOwner());
+		RecoveryPearlFetchProcedure.execute(entityHitResult.getEntity().getBlockPosBelowThatAffectsMyMovement(), this.getOwner(), this.getOwner().level());
+	}
+
+	@Override 
+	public void onHitBlock(BlockHitResult blockHitResult) {
+		super.onHitBlock(blockHitResult);
+		RecoveryPearlFetchProcedure.execute(blockHitResult.getBlockPos(), this.getOwner(), this.getOwner().level());
 	}
 
 	@Override

@@ -2107,7 +2107,7 @@
     {
       "name": "FertileFarmland",
       "type": "block",
-      "compiles": true,
+      "compiles": false,
       "locked_code": false,
       "registry_name": "fertile_farmland",
       "metadata": {
@@ -2378,7 +2378,7 @@
       "name": "PoorFarmland",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "poor_farmland",
       "metadata": {
         "files": [
@@ -2432,54 +2432,6 @@
       }
     },
     {
-      "name": "FarmlandTrampleCustom",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "farmland_trample_custom",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "files": [
-          "src/main/java/io/github/strawberrymc/procedures/FarmlandTrampleCustomProcedure.java"
-        ]
-      }
-    },
-    {
-      "name": "FarmlandStrawberry",
-      "type": "block",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "farmland_strawberry",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/strawberrymc/models/item/farmland_strawberry.json",
-          "src/main/resources/assets/strawberrymc/models/block/farmland_strawberry.json",
-          "src/main/resources/data/strawberrymc/loot_table/blocks/farmland_strawberry.json",
-          "src/main/resources/assets/strawberrymc/blockstates/farmland_strawberry.json",
-          "src/main/java/io/github/strawberrymc/block/entity/FarmlandStrawberryBlockEntity.java",
-          "src/main/java/io/github/strawberrymc/block/FarmlandStrawberryBlock.java",
-          "src/main/resources/assets/strawberrymc/items/farmland_strawberry.json"
-        ]
-      }
-    },
-    {
       "name": "OverrideFarmlandVanilla",
       "type": "procedure",
       "compiles": true,
@@ -2489,19 +2441,6 @@
         "dependencies": [],
         "files": [
           "src/main/java/io/github/strawberrymc/procedures/OverrideFarmlandVanillaProcedure.java"
-        ]
-      }
-    },
-    {
-      "name": "HoeTillNewOverride",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "hoe_till_new_override",
-      "metadata": {
-        "dependencies": [],
-        "files": [
-          "src/main/java/io/github/strawberrymc/procedures/HoeTillNewOverrideProcedure.java"
         ]
       }
     },
@@ -2581,6 +2520,36 @@
         ],
         "files": [
           "src/main/java/io/github/strawberrymc/procedures/RecoveryPearlFetchProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "UsedFarmland",
+      "type": "block",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "used_farmland",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/strawberrymc/blockstates/used_farmland.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/used_farmland.json",
+          "src/main/resources/assets/strawberrymc/items/used_farmland.json",
+          "src/main/resources/assets/strawberrymc/models/block/used_farmland.json",
+          "src/main/resources/assets/strawberrymc/models/item/used_farmland.json",
+          "src/main/java/io/github/strawberrymc/block/UsedFarmlandBlock.java"
+        ]
+      }
+    },
+    {
+      "name": "OnCropMinedProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "on_crop_mined_procedure",
+      "metadata": {
+        "dependencies": [],
+        "files": [
+          "src/main/java/io/github/strawberrymc/procedures/OnCropMinedProcedureProcedure.java"
         ]
       }
     }
@@ -2811,14 +2780,12 @@
       "~ForgeHammer@Blocks.IRON_BLOCK"
     ],
     "BLOCKS:minecraft:mineable/shovel": [
-      "~FarmlandStrawberry@CUSTOM:FarmlandStrawberry",
       "~PoorFarmland@CUSTOM:PoorFarmland",
       "~FertileFarmland@CUSTOM:FertileFarmland"
     ],
     "BLOCKS:minecraft:farmland": [
       "CUSTOM:FertileFarmland",
-      "CUSTOM:PoorFarmland",
-      "CUSTOM:FarmlandStrawberry"
+      "CUSTOM:PoorFarmland"
     ]
   },
   "tab_element_order": {},
@@ -2933,31 +2900,30 @@
       "biome.strawberrymc.dry_savanna": "Dry Savanna",
       "item.strawberrymc.poor_farmland": "Poor Farmland",
       "item.strawberrymc.flint_shard": "Flint Shard",
-      "item.strawberrymc.farmland_strawberry": "Farmland real"
+      "item.strawberrymc.used_farmland": "Used Farmland"
     }
   },
   "metadata": {
     "files": [
-      "src/main/java/io/github/strawberrymc/mixin/BiomeSourcePresetMixin.java",
-      "src/main/java/io/github/strawberrymc/mixin/NoiseGeneratorSettingsMixin.java",
       "src/main/java/io/github/strawberrymc/mixin/LevelStorageSourceMixin.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModBiomes.java",
+      "src/main/java/io/github/strawberrymc/mixin/BiomeSourcePresetMixin.java",
+      "src/main/java/io/github/strawberrymc/mixin/NoiseGeneratorSettingsMixin.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModWoodTypes.java",
       "src/main/resources/data/neoforge/data_maps/item/compostables.json",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModPotions.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModBlocks.java",
-      "src/main/java/io/github/strawberrymc/init/StrawberrymcModBlockEntities.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModItems.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModEntities.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModEntityRenderers.java",
       "src/main/java/io/github/strawberrymc/StrawberrymcMod.java",
       "src/main/java/io/github/strawberrymc/init/StrawberrymcModTabs.java",
       "src/main/resources/META-INF/accesstransformer.cfg",
-      "src/main/resources/META-INF/neoforge.mods.toml",
-      "src/main/java/io/github/strawberrymc/init/StrawberrymcModModels.java",
-      "src/main/resources/strawberrymc.mixins.json",
       "src/main/resources/pack.mcmeta",
-      "src/main/java/io/github/strawberrymc/init/StrawberrymcModDispenseBehaviors.java"
+      "src/main/resources/strawberrymc.mixins.json",
+      "src/main/java/io/github/strawberrymc/init/StrawberrymcModModels.java",
+      "src/main/java/io/github/strawberrymc/init/StrawberrymcModDispenseBehaviors.java",
+      "src/main/resources/META-INF/neoforge.mods.toml"
     ]
   },
   "foldersRoot": {

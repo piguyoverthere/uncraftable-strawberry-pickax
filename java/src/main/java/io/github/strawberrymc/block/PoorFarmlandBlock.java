@@ -21,6 +21,12 @@ import io.github.strawberrymc.procedures.TrampleFertileFarmlandProcedure;
 import io.github.strawberrymc.procedures.PoorFarmlandFertilizeProcedure;
 
 public class PoorFarmlandBlock extends Block {
+
+	public PoorFarmlandBlock(BlockBehaviour.Properties properties) {
+		super(properties.mapColor(MapColor.DIRT).sound(SoundType.GRAVEL).strength(0.6f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	/* 
 	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 15, 16);
 
 	public PoorFarmlandBlock(BlockBehaviour.Properties properties) {
@@ -56,4 +62,5 @@ public class PoorFarmlandBlock extends Block {
 		PoorFarmlandFertilizeProcedure.execute(world, x, y, z, entity);
 		return InteractionResult.SUCCESS;
 	}
+	*/
 }

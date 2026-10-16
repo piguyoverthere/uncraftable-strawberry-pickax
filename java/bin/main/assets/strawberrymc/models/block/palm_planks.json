@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/palm_planks",
+    "particle": "strawberrymc:block/palm_planks"
+  }
+}

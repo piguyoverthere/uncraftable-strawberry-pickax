@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "category": "redstone",
+  "ingredients": [
+    "strawberrymc:echowood_planks"
+  ],
+  "result": {
+    "id": "strawberrymc:echowood_button",
+    "count": 1
+  }
+}

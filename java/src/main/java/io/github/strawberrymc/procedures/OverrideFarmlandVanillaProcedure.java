@@ -18,7 +18,7 @@ public class OverrideFarmlandVanillaProcedure {
         net.minecraft.world.level.block.Block targetBlock = world.getBlockState(targetPos).getBlock();
         
         // 1. Verify the clicked block is one of your custom farmlands
-        if (targetBlock == StrawberrymcModBlocks.POOR_FARMLAND.get() || targetBlock == StrawberrymcModBlocks.FERTILE_FARMLAND.get() || targetBlock == StrawberrymcModBlocks.FARMLAND_STRAWBERRY.get()) {
+        if (targetBlock == StrawberrymcModBlocks.POOR_FARMLAND.get() || targetBlock == StrawberrymcModBlocks.FERTILE_FARMLAND.get()) {
             ItemStack mainHandItem = entity.getMainHandItem();
             BlockPos plantPos = BlockPos.containing(x, y + 1, z);
             

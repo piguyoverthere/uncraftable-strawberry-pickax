@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "strawberrymc:echowood_wood",
+    "strawberrymc:echowood_log",
+    "strawberrymc:stripped_echowood_log",
+    "strawberrymc:stripped_echowood_wood"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "strawberrymc:glowroot_tuber_stone",
+    "strawberrymc:radonite_ore",
+    "strawberrymc:chorine_ore",
+    "strawberrymc:radonite_block",
+    "strawberrymc:chorine_block"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "strawberrymc:flint_shard",
+    "strawberrymc:flint_shard",
+    "strawberrymc:flint_shard",
+    "strawberrymc:flint_shard"
+  ],
+  "result": {
+    "id": "minecraft:flint",
+    "count": 1
+  }
+}

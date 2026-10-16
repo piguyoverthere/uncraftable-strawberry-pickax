@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "chest_boat",
+  "category": "misc",
+  "ingredients": [
+    "strawberrymc:echowood_boat",
+    "minecraft:chest"
+  ],
+  "result": {
+    "id": "strawberrymc:echowood_chest_boat",
+    "count": 1
+  }
+}

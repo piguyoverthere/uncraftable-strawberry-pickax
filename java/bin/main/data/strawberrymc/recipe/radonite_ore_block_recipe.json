@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": "strawberrymc:radonite_ingot"
+  },
+  "result": {
+    "id": "strawberrymc:radonite_block",
+    "count": 1
+  }
+}

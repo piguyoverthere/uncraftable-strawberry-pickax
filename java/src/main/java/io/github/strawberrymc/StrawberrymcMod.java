@@ -36,7 +36,11 @@ import java.lang.invoke.MethodHandle;
 import it.unimi.dsi.fastutil.ints.IntObjectPair;
 import it.unimi.dsi.fastutil.ints.IntObjectImmutablePair;
 
-import io.github.strawberrymc.init.*;
+import io.github.strawberrymc.init.StrawberrymcModTabs;
+import io.github.strawberrymc.init.StrawberrymcModPotions;
+import io.github.strawberrymc.init.StrawberrymcModItems;
+import io.github.strawberrymc.init.StrawberrymcModEntities;
+import io.github.strawberrymc.init.StrawberrymcModBlocks;
 
 @Mod("strawberrymc")
 public class StrawberrymcMod {
@@ -49,7 +53,6 @@ public class StrawberrymcMod {
 		NeoForge.EVENT_BUS.register(this);
 		modEventBus.addListener(this::registerNetworking);
 		StrawberrymcModBlocks.REGISTRY.register(modEventBus);
-		StrawberrymcModBlockEntities.REGISTRY.register(modEventBus);
 		StrawberrymcModItems.REGISTRY.register(modEventBus);
 		StrawberrymcModEntities.REGISTRY.register(modEventBus);
 		StrawberrymcModTabs.REGISTRY.register(modEventBus);

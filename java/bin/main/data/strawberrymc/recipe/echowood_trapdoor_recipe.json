@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "category": "redstone",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": "strawberrymc:echowood_planks"
+  },
+  "result": {
+    "id": "strawberrymc:echowood_trapdoor",
+    "count": 2
+  }
+}
