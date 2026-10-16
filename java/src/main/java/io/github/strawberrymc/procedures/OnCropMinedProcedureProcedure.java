@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import io.github.strawberrymc.init.StrawberrymcModBlocks;
+import io.github.strawberrymc.block.UsedFarmlandBlock;
 
 @EventBusSubscriber
 public class OnCropMinedProcedureProcedure {
@@ -22,7 +23,13 @@ public class OnCropMinedProcedureProcedure {
 				world.setBlock(farmlandPos, StrawberrymcModBlocks.USED_FARMLAND.get().defaultBlockState(), 3);
 			}
 			if (farmlandState.is(StrawberrymcModBlocks.USED_FARMLAND)) {
-				world.setBlock(farmlandPos, StrawberrymcModBlocks.USED_FARMLAND.get().defaultBlockState(), 3);
+				int currentState = farmlandState.getValue(UsedFarmlandBlock.USES);
+				int nextStage = currentState < 5 ? currentState + 1 : 0;
+
+				world.setBlock(farmlandPos, state.setValue(UsedFarmlandBlock.STAGE, nextStage), 3);
+				if (currentState == 5) {
+					world.setBlock(farmlandPos, StrawberrymcModBlocks.POOR_FARMLAND.get().defaultBlockState(), 3);
+				}
 			}
 		}
 	}
