@@ -17,13 +17,13 @@ import net.minecraft.core.BlockPos;
 import io.github.strawberrymc.procedures.TrampleFertileFarmlandProcedure;
 import io.github.strawberrymc.procedures.SulfurParticulateProcedure;
 
-public class FertileFarmlandBlock extends Block {
-	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 15, 16);
+public class FertileFarmlandBlock extends FarmlandBlock {
+	//private static final VoxelShape SHAPE = box(0, 0, 0, 16, 15, 16);
 
 	public FertileFarmlandBlock(BlockBehaviour.Properties properties) {
 		super(properties.mapColor(MapColor.DIRT).sound(SoundType.GRAVEL).strength(0.6f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 	}
-
+/*
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return SHAPE;
@@ -39,4 +39,5 @@ public class FertileFarmlandBlock extends Block {
 		super.attack(blockstate, world, pos, entity);
 		SulfurParticulateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
+*/
 }
