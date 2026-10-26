@@ -11,6 +11,7 @@ public class DetermineRandFirProcedure {
 		if (randint < 85) {
 			FirGenerationProcedure.execute(world, x, y, z);
 		} else {
+			randint = Mth.nextInt(RandomSource.create(), 1, 100);
 			if (randint < 60) {
 				DeadFirGenerationProcedure.execute(world, x, y, z);
 			} else {
