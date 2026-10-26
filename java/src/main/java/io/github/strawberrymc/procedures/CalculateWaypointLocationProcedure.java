@@ -1,4 +1,4 @@
-package io.github.strawberrymc;
+package io.github.strawberrymc.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
@@ -27,7 +27,7 @@ public class CalculateWaypointLocationProcedure {
 
         // 2. Derive the unique decoration seed for VEGETAL_DECORATION (Index 8)
         // This locks the RNG sequence to match Minecraft's exact state for this chunk step
-        random.setDecorationSeed(worldSeed, chunkX << 4, chunkZ << 4, 8);
+        random.setDecorationSeed(worldSeed, chunkX << 4, chunkZ << 4);
 
         // 3. --- FIXED RARITY FILTER SIMULATION ---
         // Minecraft's modern feature modifiers do not simply call nextInt() on the root generator.
