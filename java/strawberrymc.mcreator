@@ -15,6 +15,18 @@
       }
     },
     {
+      "name": "CalculateWaypointLocationProcedure",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "calculate_waypoint_location_procedure",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/procedures/CalculateWaypointLocationProcedure.java"
+        ]
+      }
+    },
+    {
       "name": "ChorineOre",
       "type": "block",
       "compiles": true,
