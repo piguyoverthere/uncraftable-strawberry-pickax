@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft:block/blue_shulker_box",
+    "up": "strawberrymc:block/juniper_door_top",
+    "north": "minecraft:block/bee_nest_top",
+    "east": "minecraft:block/bamboo_fence",
+    "south": "minecraft:block/beetroots_stage0",
+    "west": "minecraft:block/beehive_front",
+    "particle": "minecraft:block/blue_shulker_box"
+  }
+}

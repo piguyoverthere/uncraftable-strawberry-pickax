@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "strawberrymc:alpine_meadow",
+  "features": "strawberrymc:alpine_fir",
+  "step": "vegetal_decoration"
+}

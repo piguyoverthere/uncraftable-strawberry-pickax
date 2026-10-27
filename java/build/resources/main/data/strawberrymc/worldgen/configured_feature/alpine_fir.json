@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:replace_single_block",
+  "config": {
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "tag_match",
+          "tag": "minecraft:grass_block"
+        },
+        "state": {
+          "Name": "strawberrymc:master_fir_spawner"
+        }
+      }
+    ]
+  }
+}

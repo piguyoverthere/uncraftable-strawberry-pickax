@@ -1,0 +1,8 @@
+{
+  "feature": "strawberrymc:alpine_fir",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}
