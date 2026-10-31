@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "io.github.strawberrymc.custommixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "SurfaceBiomeDepthMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.4"
+}

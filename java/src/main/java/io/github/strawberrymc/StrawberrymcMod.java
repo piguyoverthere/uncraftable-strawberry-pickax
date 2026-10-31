@@ -62,6 +62,7 @@ public class StrawberrymcMod {
 		StrawberrymcModFluidTypes.REGISTRY.register(modEventBus);
 		// Start of user code block mod init
 		Crystal.init(modEventBus);
+		FirTree.init(modEventBus);
 		io.github.strawberrymc.network.StrawberrymcModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		// End of user code block mod init
 	}
