@@ -1,0 +1,11 @@
+{
+  "monument_chime": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "strawberrymc:monument_chime",
+        "stream": true
+      }
+    ]
+  }
+}
