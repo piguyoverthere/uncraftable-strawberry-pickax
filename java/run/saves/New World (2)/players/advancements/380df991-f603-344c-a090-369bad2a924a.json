@@ -5,5 +5,15 @@
     },
     "done": true
   },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:old_growth_birch_forest": "2026-10-31 08:14:36 -0700",
+      "minecraft:dark_forest": "2026-10-31 08:16:05 -0700",
+      "minecraft:grove": "2026-10-31 08:16:01 -0700",
+      "minecraft:frozen_peaks": "2026-10-31 08:14:47 -0700",
+      "minecraft:pale_garden": "2026-10-31 08:16:03 -0700"
+    },
+    "done": false
+  },
   "DataVersion": 4790
 }

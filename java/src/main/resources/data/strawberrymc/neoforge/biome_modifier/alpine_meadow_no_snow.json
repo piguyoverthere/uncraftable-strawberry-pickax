@@ -1,0 +1,5 @@
+{
+  "type": "strawberrymc:set_temperature",
+  "biomes": "strawberrymc:alpine_meadow",
+  "temperature": 0.5
+}

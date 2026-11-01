@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "minecraft:picked_up": {
+      "minecraft:spruce_sapling": 1
+    },
+    "minecraft:dropped": {
+      "minecraft:spruce_sapling": 1
+    },
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 604,
+      "minecraft:time_since_rest": 43670,
+      "minecraft:walk_one_cm": 349,
+      "minecraft:total_world_time": 21835,
+      "minecraft:leave_game": 1,
+      "minecraft:fly_one_cm": 111584,
+      "minecraft:sneak_time": 130,
+      "minecraft:play_time": 21835,
+      "minecraft:jump": 5,
+      "minecraft:time_since_death": 21835,
+      "minecraft:drop": 1
+    }
+  },
+  "DataVersion": 4790
+}

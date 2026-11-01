@@ -102,6 +102,9 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> CHISELED_CAULDRON;
 	public static final DeferredBlock<Block> TALL_FIRE;
 	public static final DeferredBlock<Block> FIR_TREE_SPAWNER;
+	public static final DeferredBlock<Block> FIR_SNAG_SPAWNER;
+	public static final DeferredBlock<Block> DEAD_FIR_SPAWNER;
+	public static final DeferredBlock<Block> MASTER_FIR_SPAWNER;
 	static {
 		CHORINE_ORE = register("chorine_ore", ChorineOreBlock::new);
 		CHORINE_BLOCK = register("chorine_block", ChorineBlockBlock::new);
@@ -181,6 +184,9 @@ public class StrawberrymcModBlocks {
 		CHISELED_CAULDRON = register("chiseled_cauldron", ChiseledCauldronBlock::new);
 		TALL_FIRE = register("tall_fire", TallFireBlock::new);
 		FIR_TREE_SPAWNER = register("fir_tree_spawner", FirTreeSpawnerBlock::new);
+		FIR_SNAG_SPAWNER = register("fir_snag_spawner", FirSnagSpawnerBlock::new);
+		DEAD_FIR_SPAWNER = register("dead_fir_spawner", DeadFirSpawnerBlock::new);
+		MASTER_FIR_SPAWNER = register("master_fir_spawner", MasterFirSpawnerBlock::new);
 	}
 
 	// Start of user code block custom blocks

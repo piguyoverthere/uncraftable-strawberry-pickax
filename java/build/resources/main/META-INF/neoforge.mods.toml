@@ -14,24 +14,26 @@ authors="MCreator"
 # End of user code block mod configuration
 
 [[mixins]]
-    config = "strawberrymc.mixins.json"
+config = "strawberrymc.mixins.json"
 
 # Start of user code block custom mixins
+[[mixins]]
+config = "strawberrymc_custom.mixins.json"
 # End of user code block custom mixins
 
 [[dependencies.strawberrymc]]
-    modId="neoforge"
-    type="required"
-    versionRange="[26.1.2.95,)"
-    ordering="AFTER"
-    side="BOTH"
+modId="neoforge"
+type="required"
+versionRange="[26.1.2.95,)"
+ordering="AFTER"
+side="BOTH"
 
 [[dependencies.strawberrymc]]
-    modId="minecraft"
-    type="required"
-    versionRange="[26.1.2]"
-    ordering="AFTER"
-    side="BOTH"
+modId="minecraft"
+type="required"
+versionRange="[26.1.2]"
+ordering="AFTER"
+side="BOTH"
 
 
 

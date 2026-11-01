@@ -1,16 +1,5 @@
 {
   "stats": {
-    "minecraft:picked_up": {
-      "minecraft:stick": 1,
-      "minecraft:dandelion": 1,
-      "minecraft:mutton": 2
-    },
-    "minecraft:used": {
-      "strawberrymc:fir_tree_spawner": 39
-    },
-    "minecraft:killed": {
-      "minecraft:chicken": 1
-    },
     "minecraft:dropped": {
       "minecraft:arrow": 179,
       "strawberrymc:fir_tree_spawner": 1
@@ -18,7 +7,7 @@
     "minecraft:custom": {
       "minecraft:time_since_rest": 179436,
       "minecraft:walk_one_cm": 11249,
-      "minecraft:leave_game": 3,
+      "minecraft:leave_game": 4,
       "minecraft:mob_kills": 2,
       "minecraft:play_time": 89718,
       "minecraft:jump": 78,
@@ -29,6 +18,17 @@
       "minecraft:fly_one_cm": 165008,
       "minecraft:crouch_one_cm": 103,
       "minecraft:sneak_time": 475
+    },
+    "minecraft:killed": {
+      "minecraft:chicken": 1
+    },
+    "minecraft:used": {
+      "strawberrymc:fir_tree_spawner": 39
+    },
+    "minecraft:picked_up": {
+      "minecraft:stick": 1,
+      "minecraft:dandelion": 1,
+      "minecraft:mutton": 2
     }
   },
   "DataVersion": 4790

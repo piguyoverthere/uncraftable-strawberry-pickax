@@ -8,7 +8,10 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:beach": "2026-09-25 16:18:20 -0700",
-      "minecraft:savanna": "2026-09-25 16:06:47 -0700"
+      "minecraft:grove": "2026-10-31 08:14:15 -0700",
+      "minecraft:meadow": "2026-10-31 08:07:54 -0700",
+      "minecraft:savanna": "2026-09-25 16:06:47 -0700",
+      "minecraft:plains": "2026-10-31 08:13:26 -0700"
     },
     "done": false
   },

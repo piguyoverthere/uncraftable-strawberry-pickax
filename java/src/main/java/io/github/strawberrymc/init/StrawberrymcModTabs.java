@@ -27,6 +27,9 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.CHISELED_CAULDRON.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.TALL_FIRE.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.FIR_TREE_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.FIR_SNAG_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.DEAD_FIR_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent
@@ -146,6 +149,9 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.GLOWROOT_DUMMY_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.CHISELED_CAULDRON.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.FIR_TREE_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.FIR_SNAG_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.DEAD_FIR_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
 			}
 		} else if (tabData.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
 			tabData.accept(StrawberrymcModItems.COCONUT.get());

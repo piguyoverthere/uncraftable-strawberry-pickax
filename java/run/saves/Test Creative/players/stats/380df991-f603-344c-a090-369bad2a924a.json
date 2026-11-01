@@ -1,8 +1,5 @@
 {
   "stats": {
-    "minecraft:dropped": {
-      "minecraft:ender_pearl": 1
-    },
     "minecraft:picked_up": {
       "minecraft:ender_pearl": 1
     },
@@ -11,21 +8,26 @@
       "minecraft:end_portal_frame": 26,
       "minecraft:ender_pearl": 13
     },
+    "minecraft:dropped": {
+      "minecraft:ender_pearl": 1
+    },
     "minecraft:custom": {
-      "minecraft:time_since_rest": 64738,
-      "minecraft:walk_one_cm": 16898,
-      "minecraft:leave_game": 4,
-      "minecraft:play_time": 32369,
-      "minecraft:jump": 33,
-      "minecraft:time_since_death": 22650,
+      "minecraft:time_since_rest": 75326,
+      "minecraft:walk_one_cm": 16947,
+      "minecraft:leave_game": 7,
+      "minecraft:walk_under_water_one_cm": 565,
+      "minecraft:play_time": 37663,
+      "minecraft:jump": 39,
+      "minecraft:time_since_death": 27944,
       "minecraft:drop": 1,
       "minecraft:interact_with_brewingstand": 1,
       "minecraft:sprint_one_cm": 5747,
       "minecraft:open_chest": 4,
-      "minecraft:total_world_time": 33331,
-      "minecraft:fly_one_cm": 449598,
-      "minecraft:crouch_one_cm": 579,
-      "minecraft:sneak_time": 1373,
+      "minecraft:total_world_time": 50012,
+      "minecraft:fly_one_cm": 500030,
+      "minecraft:crouch_one_cm": 592,
+      "minecraft:walk_on_water_one_cm": 120,
+      "minecraft:sneak_time": 1571,
       "minecraft:climb_one_cm": 328
     }
   },

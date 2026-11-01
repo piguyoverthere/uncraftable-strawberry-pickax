@@ -1,35 +1,3 @@
-/give @s minecraft:phantom_membrane 10
-/give @s minecraft:echo_shard 10
-/give @s strawberrymc:iron_bow
-/data get entity @p SelectedItem
-/data get entity @s SelectedItem
-/give @s minecraft:echo_shard 10
-/summon minecraft:sheep
-/clear
-/give @s strawberrymc:iron_bow
-/give @s minecraft:arrow 10
-/give @s minecraft:sponge 10
-/fill ~-1 ~-1 ~-1 ~1 ~1 ~1 air replace water
-/give 2
-/give @s minecraft:gunpowder 10
-/give @s minecraft:arrow 10
-/data get entity @s SelectedItem
-/fill ~-20 ~ ~-20 ~20 ~ ~20 minecraft:dirt
-/setblock ~ ~ ~ minecraft:structure_block
-/weather clear
-/locate biome strawberrymc:alpine_meadow
-/tp @s -2919 148 -1708
-/place feature strawberrymc:alpine_meadow_tree
-/place feature strawberrymc:fir
-/gamemode spectator
-/tp @p 1000 100 1000
-/locate biome strawberrymc:alpine_meadow
-/tp @s -2904 100 -1688
-/gamemode creative
-/setblock ~ ~ ~ minecraft:structure_block
-/locate biome strawberrymc:alpine_meadow
-/tp @s 342 2 -2535
-/gamemode creative
 /gamemode spectator
 /gamemode creative
 /setblock ~ ~ ~ minecraft:structure_block
@@ -48,3 +16,35 @@
 /time set minecraft:day
 /give @s strawberrymc:fir_tree_spawner
 /setblock ~ ~ ~ minecraft:structure_block
+/gamemode spectator
+/locate biome strawberrymc:crystal_hollows
+/tp @s -14 15 -24
+/locate biome strawberrymc:alpine_meadow
+/tp @s 1082 0 1737
+/tp 1000 100 10000
+/locate biome strawberrymc:alpine_meadow
+/tp @s 3304 36 13200
+/locate biome strawberrymc:alpine_meadow
+/tp @s -213 181 276
+/locate biome strawberrymc:alpine_meadow
+/tp @s -439 158 258
+/locate biome strawberrymc:alpine_meadow
+/tp @s 55 150 0
+/locate biome strawberrymc:alpine_meadow
+/tp @s 998 147 -1277
+/locate biome strawberrymc:alpine_meadow
+/tp @s -33 132 522
+/locate biome strawberrymc:ocean_abyss
+/tp @s 300 133 2041
+/locate structure minecraft:monument
+/tp @s 304 ~ 2208
+/locate structure minecraft:monument
+/tp @s -992 ~ -448
+/gamemode spectator
+/effect give @s minecraft:night_vision infinite
+/gamemode creative
+/locate biome strawberrymc:alpine_meadow
+/tp @s 776 132 -1599
+/tp @s 10000 100 100000
+/locate biome strawberrymc:alpine_meadow
+/tp @s 9520 100 100512

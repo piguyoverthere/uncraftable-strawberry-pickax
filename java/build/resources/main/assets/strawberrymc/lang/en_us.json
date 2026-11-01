@@ -157,5 +157,8 @@
   "advancements.echo_shard_advancement.descr": "I SWEAR IM NOT CHEATING",
   "biome.strawberrymc.montane_jungle": "Montane Jungle",
   "biome.strawberrymc.alpine_meadow": "Alpine Meadow",
-  "item.strawberrymc.fir_tree_spawner": "Fir Tree Spawner"
+  "item.strawberrymc.fir_tree_spawner": "Fir Tree Spawner",
+  "item.strawberrymc.fir_snag_spawner": "Fir Snag Spawner",
+  "item.strawberrymc.dead_fir_spawner": "Dead Fir Spawner",
+  "item.strawberrymc.master_fir_spawner": "Master Fir Spawner"
 }

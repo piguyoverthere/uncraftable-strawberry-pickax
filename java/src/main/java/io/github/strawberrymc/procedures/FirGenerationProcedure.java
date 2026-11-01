@@ -66,5 +66,8 @@ public class FirGenerationProcedure {
                 world.setBlock(spirePos, Blocks.SPRUCE_LEAVES.defaultBlockState(), 3);
             }
         }
+
+        // 5. Connect fences and set leaf distances so the leaves don't decay
+        io.github.strawberrymc.FirTreeFinisher.finish(world, BlockPos.containing(x, y, z));
     }
 }

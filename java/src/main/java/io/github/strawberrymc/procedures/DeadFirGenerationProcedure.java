@@ -34,23 +34,18 @@ public class DeadFirGenerationProcedure {
             }
             
             if (radius < 1) radius = 1;
-            
-            for (int dx = -radius; dx <= radius; dx++) {
-                for (int dz = -radius; dz <= radius; dz++) {
-                    if (dx == 0 && dz == 0) continue; 
-                    
-                    if (Math.abs(dx) == radius && Math.abs(dz) == radius) {
-                        if (radius > 1 && Math.random() < 0.8) continue; 
-                        if (radius == 1 && Math.random() < 0.5) continue; 
-                    }
-                    
-                    // Heavy decay sparseness (75% chance to skip)
-                    if (Math.random() < 0.75) continue; 
 
-                    BlockPos branchPos = BlockPos.containing(x + dx, y + i, z + dz);
-                    if (world.isEmptyBlock(branchPos)) {
-                        world.setBlock(branchPos, Blocks.SPRUCE_FENCE.defaultBlockState(), 3);
-                    }
+            // Branches grow straight out from the trunk (fences only connect sideways, not diagonally)
+            int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+            for (int[] dir : directions) {
+                // Heavy decay sparseness (65% chance of no branch)
+                if (Math.random() < 0.65) continue;
+
+                int length = 1 + (int)(Math.random() * radius);
+                for (int step = 1; step <= length; step++) {
+                    BlockPos branchPos = BlockPos.containing(x + dir[0] * step, y + i, z + dir[1] * step);
+                    if (!world.isEmptyBlock(branchPos)) break;
+                    world.setBlock(branchPos, Blocks.SPRUCE_FENCE.defaultBlockState(), 3);
                 }
             }
         }
@@ -63,5 +58,8 @@ public class DeadFirGenerationProcedure {
                 world.setBlock(spirePos, Blocks.SPRUCE_FENCE.defaultBlockState(), 3);
             }
         }
+
+        // 5. Connect fences and set leaf distances so the leaves don't decay
+        io.github.strawberrymc.FirTreeFinisher.finish(world, BlockPos.containing(x, y, z));
     }
 }
