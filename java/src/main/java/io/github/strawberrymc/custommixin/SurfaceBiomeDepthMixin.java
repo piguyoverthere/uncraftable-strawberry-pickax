@@ -21,17 +21,38 @@ import java.util.function.Function;
 // so the custom biome only ties with the vanilla one and wins at random (often underground or in the air).
 // This cuts each listed biome's climate box out of every other surface biome, so inside its climate ranges
 // it is the only choice, exactly like a vanilla biome. Cave biomes (other depths) are left alone.
+// It also adds biomes that aren't MCreator elements (OCEAN_ABYSS, defined in data/strawberrymc/worldgen/biome).
 // Lives outside MCreator's generated files so it isn't overwritten.
 @Mixin(StrawberrymcModBiomes.class)
 public class SurfaceBiomeDepthMixin {
+	private static final ResourceKey<Biome> OCEAN_ABYSS = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "ocean_abyss"));
+
 	private static final List<ResourceKey<Biome>> SURFACE_BIOMES = List.of(
-		ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "alpine_meadow"))
+		ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "alpine_meadow")),
+		OCEAN_ABYSS
 	);
+
+	// The deepest, furthest-from-shore part of deep oceans (deep ocean is continentalness -1.05 to -0.455),
+	// in every climate except frozen. Ocean monuments only generate here (see data/minecraft/worldgen/structure/monument.json).
+	private static final Climate.Parameter[] OCEAN_ABYSS_CLIMATE = {
+		Climate.Parameter.span(-0.45f, 1.0f), // temperature
+		Climate.Parameter.span(-1.0f, 1.0f), // humidity
+		Climate.Parameter.span(-1.05f, -0.7f), // continentalness
+		Climate.Parameter.span(-1.0f, 1.0f), // erosion
+		Climate.Parameter.span(-1.0f, 1.0f) // weirdness
+	};
 
 	@Inject(method = "modifyOverworldParameterPoints", at = @At("RETURN"), cancellable = true)
 	private static <T> void strawberrymc$claimClimate(Climate.ParameterList<T> originalList, Function<ResourceKey<Biome>, T> lookup,
 			CallbackInfoReturnable<Climate.ParameterList<T>> cir) {
 		List<Pair<Climate.ParameterPoint, T>> parameters = new ArrayList<>(cir.getReturnValue().values());
+
+		// Same two depth points MCreator and vanilla use for surface biomes
+		T oceanAbyss = lookup.apply(OCEAN_ABYSS);
+		for (float depth : new float[]{0.0f, 1.0f}) {
+			Climate.Parameter[] c = OCEAN_ABYSS_CLIMATE;
+			parameters.add(new Pair<>(new Climate.ParameterPoint(c[0], c[1], c[2], c[3], Climate.Parameter.point(depth), c[4], 0), oceanAbyss));
+		}
 
 		for (ResourceKey<Biome> key : SURFACE_BIOMES) {
 			T biome = lookup.apply(key);
