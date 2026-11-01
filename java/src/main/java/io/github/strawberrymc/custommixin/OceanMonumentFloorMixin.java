@@ -20,8 +20,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 // higher floor inside it is cleared rather than buried.
 @Mixin(OceanMonumentStructure.class)
 public class OceanMonumentFloorMixin {
-	// Keeps the monument well clear of the y=-54 lava level
-	private static final int LOWEST_BASE_Y = -45;
+	// Bedrock reaches up to y=-60, so this keeps a little deepslate under the monument (AbyssLavaFlood keeps the
+	// water around it from turning to lava below y=-54)
+	private static final int LOWEST_BASE_Y = -58;
 
 	@Inject(method = "generatePieces", at = @At("TAIL"))
 	private static void strawberrymc$sitOnSeafloor(StructurePiecesBuilder builder, Structure.GenerationContext context, CallbackInfo ci) {

@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Structure.class)
 public class MonumentBasinMixin {
 	private static final int FLAT_RING = 8;
-	// Far enough for the slope to climb back up from the lowest monuments (base y=-45) to the usual abyss floor
+	// Far enough for the slope to climb back up from the lowest monuments (base y=-58) to the usual abyss floor
 	private static final int BASIN_RADIUS = 56;
 	private static final int MAX_CAVE_FLOOD = 16;
 

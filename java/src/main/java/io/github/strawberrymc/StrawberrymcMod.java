@@ -65,6 +65,7 @@ public class StrawberrymcMod {
 		FirTree.init(modEventBus);
 		SetTemperatureBiomeModifier.init(modEventBus);
 		VoidTerrainPack.init(modEventBus);
+		AbyssLavaFlood.init(modEventBus);
 		io.github.strawberrymc.network.StrawberrymcModVariables.ATTACHMENT_TYPES.register(modEventBus);
 		// End of user code block mod init
 	}
