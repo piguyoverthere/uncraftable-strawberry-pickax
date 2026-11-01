@@ -6,7 +6,8 @@
     "SurfaceBiomeDepthMixin",
     "OceanMonumentFloorMixin",
     "MonumentBuildingAccessor",
-    "StructurePieceMoveMixin"
+    "StructurePieceMoveMixin",
+    "MonumentBasinMixin"
   ],
   "injectors": {
     "defaultRequire": 1
