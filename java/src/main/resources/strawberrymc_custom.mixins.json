@@ -3,7 +3,11 @@
   "package": "io.github.strawberrymc.custommixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "SurfaceBiomeDepthMixin"
+    "SurfaceBiomeDepthMixin",
+    "OceanMonumentFloorMixin",
+    "MonumentBuildingAccessor",
+    "StructurePieceMoveMixin",
+    "MonumentBasinMixin"
   ],
   "injectors": {
     "defaultRequire": 1
