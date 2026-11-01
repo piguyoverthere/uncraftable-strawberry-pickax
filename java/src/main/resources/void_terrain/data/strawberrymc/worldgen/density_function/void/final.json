@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:interpolated",
+  "argument": {
+    "type": "minecraft:max",
+    "argument1": {
+      "type": "minecraft:max",
+      "argument1": "strawberrymc:void/fractured_plain",
+      "argument2": "strawberrymc:void/islands"
+    },
+    "argument2": {
+      "type": "minecraft:max",
+      "argument1": "strawberrymc:void/pillars",
+      "argument2": "strawberrymc:void/bridges"
+    }
+  }
+}

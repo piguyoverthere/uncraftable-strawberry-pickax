@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:min",
+  "argument1": {
+    "type": "minecraft:min",
+    "argument1": "strawberrymc:void/ground",
+    "argument2": "strawberrymc:void/underside"
+  },
+  "argument2": "strawberrymc:void/cracks"
+}

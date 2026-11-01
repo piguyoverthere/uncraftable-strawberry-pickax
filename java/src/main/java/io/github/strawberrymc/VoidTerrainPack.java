@@ -1,0 +1,23 @@
+package io.github.strawberrymc;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
+
+// The Void's terrain lives in its own always-on datapack (src/main/resources/void_terrain) that loads above the
+// mod's own data. Its dimension/void_dim.json replaces the one MCreator generates from the VoidDim element, so
+// MCreator can keep regenerating its copy without undoing the custom terrain.
+public class VoidTerrainPack {
+	public static void init(IEventBus eventBus) {
+		eventBus.addListener(VoidTerrainPack::addPack);
+	}
+
+	private static void addPack(AddPackFindersEvent event) {
+		event.addPackFinders(Identifier.fromNamespaceAndPath("strawberrymc", "void_terrain"), PackType.SERVER_DATA, Component.literal("Strawberry MC Void terrain"),
+				PackSource.BUILT_IN, true, Pack.Position.TOP);
+	}
+}
