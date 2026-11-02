@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "strawberrymc:jetbrains_mono_regular.ttf",
+      "size": 8.5,
+      "oversample": 4.0,
+      "shift": [0, 0.5]
+    }
+  ]
+}
