@@ -6,6 +6,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
@@ -14,24 +15,34 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
+import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+import javax.annotation.Nullable;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 // The first time a player enters an ocean monument, the server tells their client to play the monument cutscene
@@ -46,11 +57,17 @@ public class MonumentIntro {
 
 	// Checked every half second rather than every tick
 	private static final int CHECK_INTERVAL = 10;
+	// Length of the cutscene: three scenes of the monument, then back to the player
+	public static final int CUTSCENE_TICKS = 305;
+	// Players watching the cutscene can't see what's around them, so until this game time they take no damage and
+	// mobs can't target them. The game keeps running so kelp, seagrass and everything else stays animated
+	private static final Map<UUID, Long> PROTECTED_UNTIL = new HashMap<>();
 
-	public record PlayCutscene(BlockPos min, BlockPos max) implements CustomPacketPayload {
+	public record PlayCutscene(BlockPos min, BlockPos max, Direction entrance) implements CustomPacketPayload {
 		public static final Type<PlayCutscene> TYPE = new Type<>(Identifier.fromNamespaceAndPath("strawberrymc", "monument_cutscene"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, PlayCutscene> STREAM_CODEC =
-			StreamCodec.composite(BlockPos.STREAM_CODEC, PlayCutscene::min, BlockPos.STREAM_CODEC, PlayCutscene::max, PlayCutscene::new);
+			StreamCodec.composite(BlockPos.STREAM_CODEC, PlayCutscene::min, BlockPos.STREAM_CODEC, PlayCutscene::max,
+				Direction.STREAM_CODEC, PlayCutscene::entrance, PlayCutscene::new);
 
 		@Override
 		public Type<PlayCutscene> type() {
@@ -64,10 +81,35 @@ public class MonumentIntro {
 		eventBus.addListener(MonumentIntro::addPack);
 		NeoForge.EVENT_BUS.addListener(MonumentIntro::onPlayerTick);
 		NeoForge.EVENT_BUS.addListener(MonumentIntro::registerCommands);
+		NeoForge.EVENT_BUS.addListener(MonumentIntro::onIncomingDamage);
+		NeoForge.EVENT_BUS.addListener(MonumentIntro::onChangeTarget);
 	}
 
 	// Debug command: /cutscene clear [players] forgets that the players (default: you) have seen the cutscene, so it
 	// plays again the next time they enter a monument
+	private static boolean isWatchingCutscene(@Nullable Entity entity) {
+		if (!(entity instanceof ServerPlayer player))
+			return false;
+		Long until = PROTECTED_UNTIL.get(player.getUUID());
+		if (until == null)
+			return false;
+		if (player.level().getGameTime() < until)
+			return true;
+		PROTECTED_UNTIL.remove(player.getUUID());
+		return false;
+	}
+
+	private static void onIncomingDamage(LivingIncomingDamageEvent event) {
+		// /kill and the void still work
+		if (isWatchingCutscene(event.getEntity()) && !event.getSource().is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+			event.setCanceled(true);
+	}
+
+	private static void onChangeTarget(LivingChangeTargetEvent event) {
+		if (isWatchingCutscene(event.getNewAboutToBeSetTarget()))
+			event.setCanceled(true);
+	}
+
 	private static void registerCommands(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cutscene")
 			.requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
@@ -88,8 +130,8 @@ public class MonumentIntro {
 
 	private static void registerPayloads(RegisterPayloadHandlersEvent event) {
 		// The handler only runs on the client, so the client-only cutscene class is never loaded on a server
-		event.registrar("1").playToClient(PlayCutscene.TYPE, PlayCutscene.STREAM_CODEC,
-			(payload, context) -> MonumentCutscene.start(payload.min(), payload.max()));
+		event.registrar("2").playToClient(PlayCutscene.TYPE, PlayCutscene.STREAM_CODEC,
+			(payload, context) -> MonumentCutscene.start(payload.min(), payload.max(), payload.entrance()));
 	}
 
 	private static void addPack(AddPackFindersEvent event) {
@@ -107,8 +149,15 @@ public class MonumentIntro {
 		if (!monument.isValid() || monument.getPieces().isEmpty())
 			return;
 		// The first piece is the monument building; the start's own box is widened for MonumentBasinMixin's basin
-		BoundingBox box = monument.getPieces().get(0).getBoundingBox();
+		StructurePiece building = monument.getPieces().get(0);
+		BoundingBox box = building.getBoundingBox();
+		// The entrance is on the building's local front (z=0), which is the side opposite its orientation
+		Direction entrance = building.getOrientation() == null ? Direction.SOUTH : building.getOrientation().getOpposite();
 		player.setData(SEEN_MONUMENT, true);
-		PacketDistributor.sendToPlayer(player, new PlayCutscene(new BlockPos(box.minX(), box.minY(), box.minZ()), new BlockPos(box.maxX(), box.maxY(), box.maxZ())));
+		PROTECTED_UNTIL.put(player.getUUID(), level.getGameTime() + CUTSCENE_TICKS);
+		// Guardians already attacking the player stop; onChangeTarget keeps them (and anything else) from starting again
+		for (Mob mob : level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(64), mob -> mob.getTarget() == player))
+			mob.setTarget(null);
+		PacketDistributor.sendToPlayer(player, new PlayCutscene(new BlockPos(box.minX(), box.minY(), box.minZ()), new BlockPos(box.maxX(), box.maxY(), box.maxZ()), entrance));
 	}
 }
