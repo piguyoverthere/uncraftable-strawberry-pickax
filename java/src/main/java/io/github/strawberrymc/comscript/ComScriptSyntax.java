@@ -12,13 +12,9 @@ public final class ComScriptSyntax {
 	public static final Set<String> KEYWORDS = Set.of("store", "new", "set", "store.global", "excrd", "mark", "add", "relative", "local:", "global:",
 		"static", "mobile");
 
-	// The execute subcommands, written without "execute" in front, plus run and if comp
+	// execute and its subcommands, plus run and if comp
 	public static final Set<String> SUBCOMMANDS = Set.of("execute", "as", "at", "in", "align", "anchored", "positioned", "rotated", "facing", "if",
 		"unless", "on", "run", "comp");
-
-	// Statements that start with these are execute statements; "store" only counts when followed by result or success
-	public static final Set<String> EXECUTE_STARTS = Set.of("as", "at", "in", "align", "anchored", "positioned", "rotated", "facing", "if", "unless",
-		"on");
 
 	public static final Set<String> CONVERSIONS = Set.of("string", "str", "boolean", "bool", "booleanstate", "bin", "createbin", "float", "flt", "integer",
 		"int");
@@ -44,7 +40,7 @@ public final class ComScriptSyntax {
 
 	public static boolean isFunction(String name) {
 		String lower = name.toLowerCase();
-		return FUNCTIONS.contains(lower) || isRandomFloat(lower);
+		return FUNCTIONS.contains(lower) || ComScriptFetchers.NAMES.contains(lower) || isRandomFloat(lower);
 	}
 
 	// Replaces &name; and &#123; tokens with the characters they stand for

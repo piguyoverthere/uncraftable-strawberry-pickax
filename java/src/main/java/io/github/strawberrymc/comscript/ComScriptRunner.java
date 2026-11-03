@@ -29,6 +29,8 @@ public class ComScriptRunner implements ComScriptExpression.Environment {
 	private final ScripterBlockEntity scripter;
 	final Map<String, Object> variables = new HashMap<>();
 	private int budget;
+	// The source of the statement being run, for fetchers that look up entities or the world
+	private CommandSourceStack current;
 
 	private static class StopRun extends RuntimeException {
 		StopRun() {
@@ -75,6 +77,7 @@ public class ComScriptRunner implements ComScriptExpression.Environment {
 
 	// Runs one statement; returns the source later statements use, which mark changes
 	private CommandSourceStack execute(Statement statement, CommandSourceStack source) {
+		current = source;
 		switch (statement) {
 			case ComScriptParser.Command command -> runCommand(fill(command.text()), source);
 			case ComScriptParser.Store store -> store(store);
@@ -207,6 +210,11 @@ public class ComScriptRunner implements ComScriptExpression.Environment {
 	@Override
 	public Object variable(String name) {
 		return variables.get(name);
+	}
+
+	@Override
+	public CommandSourceStack source() {
+		return current;
 	}
 
 	@Override

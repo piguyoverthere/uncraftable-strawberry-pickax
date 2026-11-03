@@ -148,7 +148,7 @@ public final class ScriptHighlighter {
 				String word = text.substring(i, end);
 				int color = TEXT;
 				boolean call = end < text.length() && text.charAt(end) == '(';
-				if (call && ComScriptSyntax.isFunction(word))
+				if (call && ComScriptSyntax.isFunction(word) || io.github.strawberrymc.comscript.ComScriptFetchers.BARE.contains(word.toLowerCase()))
 					color = FUNCTION;
 				else if (ComScriptSyntax.KEYWORDS.contains(word) || word.equals("mod"))
 					color = KEYWORD;

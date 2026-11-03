@@ -42,8 +42,18 @@ public final class ComScriptExpression {
 		}
 	}
 
+	// An entity selector like @e[type=pig,limit=1], kept as written until a fetcher looks it up
+	public record Selector(String text) {
+		@Override
+		public String toString() {
+			return text;
+		}
+	}
+
 	public interface Environment {
 		Object variable(String name);
+
+		net.minecraft.commands.CommandSourceStack source();
 
 		ServerLevel level();
 
@@ -91,6 +101,23 @@ public final class ComScriptExpression {
 				i += literal.length();
 			} else if (Character.isWhitespace(c)) {
 				i++;
+			} else if (c == '@') {
+				// Selectors keep their [ ] arguments
+				int end = i + 1;
+				while (end < text.length() && (Character.isLetterOrDigit(text.charAt(end)) || text.charAt(end) == '.' || text.charAt(end) == '_'))
+					end++;
+				if (end < text.length() && text.charAt(end) == '[') {
+					int depth = 0;
+					while (end < text.length()) {
+						char d = text.charAt(end++);
+						if (d == '[')
+							depth++;
+						else if (d == ']' && --depth == 0)
+							break;
+					}
+				}
+				tokens.add(text.substring(i, end));
+				i = end;
 			} else if (ComScriptParser.isQuote(c) || c == '\'') {
 				int end = ComScriptParser.stringEnd(text, i);
 				tokens.add(text.substring(i, end));
@@ -216,6 +243,8 @@ public final class ComScriptExpression {
 				return new Literal(token.equals("<true;>"));
 			if (token.equals("true") || token.equals("false"))
 				throw new ExpressionError("Write booleans as <" + token + ";>");
+			if (token.startsWith("@"))
+				return new Literal(new Selector(token));
 			if (token.startsWith("$"))
 				return new Variable(token.substring(1));
 			if ("(".equals(peek()) && Character.isLetter(token.charAt(0))) {
@@ -248,6 +277,9 @@ public final class ComScriptExpression {
 			case Literal literal -> literal.value();
 			case Variable variable -> {
 				Object value = env.variable(variable.name());
+				// isDownfall and other fetchers that need no brackets
+				if (value == null && ComScriptFetchers.BARE.contains(variable.name().toLowerCase()))
+					value = ComScriptFetchers.bare(variable.name(), env);
 				if (value == null)
 					throw ScriptError.undefined(variable.name());
 				yield value;
@@ -322,6 +354,8 @@ public final class ComScriptExpression {
 	private static Object call(Call call, Environment env) {
 		String name = call.name();
 		List<Node> args = call.arguments();
+		if (ComScriptFetchers.NAMES.contains(name))
+			return ComScriptFetchers.call(call, env);
 		// Online(Steve)? can name a player without quotes
 		if (name.equals("online")) {
 			expectArguments(call, 1);
@@ -514,6 +548,8 @@ public final class ComScriptExpression {
 			return "boolean";
 		if (value instanceof TextStyle)
 			return "style";
+		if (value instanceof Selector)
+			return "selector";
 		return "string";
 	}
 

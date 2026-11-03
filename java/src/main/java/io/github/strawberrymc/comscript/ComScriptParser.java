@@ -49,7 +49,7 @@ public final class ComScriptParser {
 	public record Execute(int line, String subcommands, List<Comparison> comparisons, List<Statement> body) implements Statement {
 	}
 
-	// *{ } runs every tick, *<event>{ } when the event happens
+	// *{ } runs every tick, *N{ } every N + 1 ticks, *<event>{ } when the event happens
 	public record EventBlock(int line, String event, List<Statement> body) implements Statement {
 	}
 
@@ -232,9 +232,12 @@ public final class ComScriptParser {
 			return storeGlobal(line, text);
 		if (first.equals("mark"))
 			return mark(line, text);
-		if (ComScriptSyntax.EXECUTE_STARTS.contains(first)
-				|| first.equals("store") && words.size() > 1 && (words.get(1).equals("result") || words.get(1).equals("success")))
+		// A bare if or unless is ComScript's if comp; Minecraft's execute conditions need execute in front
+		if (first.equals("if") || first.equals("unless")) {
+			if (words.size() < 2 || !words.get(1).equals("comp"))
+				throw new SyntaxError(line, "Minecraft's " + first + " needs execute in front: execute " + text);
 			return execute(line, text);
+		}
 		return new Command(line, text);
 	}
 
@@ -243,7 +246,10 @@ public final class ComScriptParser {
 		if (open < 0 || !text.endsWith("}"))
 			throw new SyntaxError(line, "Expected { ... } after " + text.split("\\s")[0]);
 		String event = text.substring(1, open).trim();
-		if (!event.isEmpty() && !ComScriptSyntax.EVENTS.contains(event))
+		// *N{ } skips N ticks between runs, so *1{ } runs every other tick
+		if (event.matches("\\d+") && event.length() > 9)
+			throw new SyntaxError(line, "Too many ticks to skip in *" + event + "{ }");
+		if (!event.isEmpty() && !event.matches("\\d+") && !ComScriptSyntax.EVENTS.contains(event))
 			throw new SyntaxError(line, "Unknown event " + event + " (known events: " + String.join(", ", ComScriptSyntax.EVENTS) + ")");
 		int bodyLine = line + count(text.substring(0, open), '\n');
 		return new EventBlock(line, event, parse(text.substring(open + 1, text.length() - 1), bodyLine));

@@ -46,7 +46,19 @@ public class ScripterBlockEntity extends BlockEntity {
 	public record LogLine(char level, String text) {
 	}
 
-	private record Listener(String event, List<ComScriptParser.Statement> body, CommandSourceStack source, ComScriptRunner runner) {
+	// For *{ } and *N{ } blocks, event is "" or N; started is the game time the block was registered
+	private record Listener(String event, List<ComScriptParser.Statement> body, CommandSourceStack source, ComScriptRunner runner, long started) {
+		boolean isTimer() {
+			return event.isEmpty() || Character.isDigit(event.charAt(0));
+		}
+
+		int interval() {
+			return event.isEmpty() ? 1 : Integer.parseInt(event) + 1;
+		}
+
+		String describe() {
+			return !isTimer() ? event : interval() == 1 ? "every tick" : "every " + interval() + " ticks";
+		}
 	}
 
 	private String script = "";
@@ -145,7 +157,7 @@ public class ScripterBlockEntity extends BlockEntity {
 		log(INFO, -1, "Running script");
 		new ComScriptRunner(this).run(statements, createSource(serverLevel));
 		if (!listeners.isEmpty())
-			log(INFO, -1, "Listening for " + String.join(", ", listeners.stream().map(l -> l.event().isEmpty() ? "every tick" : l.event()).distinct().toList()));
+			log(INFO, -1, "Listening for " + String.join(", ", listeners.stream().map(Listener::describe).distinct().toList()));
 		currentLine = -1;
 		sync();
 	}
@@ -161,7 +173,7 @@ public class ScripterBlockEntity extends BlockEntity {
 	}
 
 	void listen(String event, List<ComScriptParser.Statement> body, CommandSourceStack source, ComScriptRunner runner) {
-		listeners.add(new Listener(event, body, source, runner));
+		listeners.add(new Listener(event, body, source, runner, level.getGameTime()));
 		LISTENING.add(this);
 	}
 
@@ -182,7 +194,7 @@ public class ScripterBlockEntity extends BlockEntity {
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ScripterBlockEntity scripter) {
 		for (Listener listener : List.copyOf(scripter.listeners))
-			if (listener.event().isEmpty())
+			if (listener.isTimer() && (level.getGameTime() - listener.started()) % listener.interval() == 0)
 				listener.runner().run(listener.body(), listener.source());
 		scripter.currentLine = -1;
 		// Every-tick output is sent to the client a few times a second, not every tick
