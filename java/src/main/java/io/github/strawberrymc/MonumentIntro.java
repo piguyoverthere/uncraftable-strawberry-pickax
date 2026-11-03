@@ -2,6 +2,7 @@ package io.github.strawberrymc;
 
 import com.mojang.serialization.Codec;
 import io.github.strawberrymc.cutscene.MonumentCutscene;
+import io.github.strawberrymc.monument.MonumentShell;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -58,16 +59,18 @@ public class MonumentIntro {
 	// Checked every half second rather than every tick
 	private static final int CHECK_INTERVAL = 10;
 	// Length of the cutscene: three scenes of the monument, then back to the player
-	public static final int CUTSCENE_TICKS = 305;
+	public static final int CUTSCENE_TICKS = 425;
 	// Players watching the cutscene can't see what's around them, so until this game time they take no damage and
 	// mobs can't target them. The game keeps running so kelp, seagrass and everything else stays animated
 	private static final Map<UUID, Long> PROTECTED_UNTIL = new HashMap<>();
 
-	public record PlayCutscene(BlockPos min, BlockPos max, Direction entrance) implements CustomPacketPayload {
+	// vent is the roof gazebo's vent and sensor one of the hall's Prismatic Sensors, for the cutscene's close-ups
+	public record PlayCutscene(BlockPos min, BlockPos max, Direction entrance, BlockPos vent, BlockPos sensor) implements CustomPacketPayload {
 		public static final Type<PlayCutscene> TYPE = new Type<>(Identifier.fromNamespaceAndPath("strawberrymc", "monument_cutscene"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, PlayCutscene> STREAM_CODEC =
 			StreamCodec.composite(BlockPos.STREAM_CODEC, PlayCutscene::min, BlockPos.STREAM_CODEC, PlayCutscene::max,
-				Direction.STREAM_CODEC, PlayCutscene::entrance, PlayCutscene::new);
+				Direction.STREAM_CODEC, PlayCutscene::entrance, BlockPos.STREAM_CODEC, PlayCutscene::vent, BlockPos.STREAM_CODEC, PlayCutscene::sensor,
+				PlayCutscene::new);
 
 		@Override
 		public Type<PlayCutscene> type() {
@@ -86,7 +89,8 @@ public class MonumentIntro {
 	}
 
 	// Debug command: /cutscene clear [players] forgets that the players (default: you) have seen the cutscene, so it
-	// plays again the next time they enter a monument
+	// plays again the next time they enter a monument. A player inside a monument also gets its roof vent rebuilt, so the
+	// vent cutscene plays again when its Ancient Prismarine is mined
 	private static boolean isWatchingCutscene(@Nullable Entity entity) {
 		if (!(entity instanceof ServerPlayer player))
 			return false;
@@ -97,6 +101,11 @@ public class MonumentIntro {
 			return true;
 		PROTECTED_UNTIL.remove(player.getUUID());
 		return false;
+	}
+
+	// Keeps a player safe from damage and targeting for the next ticks, while they watch a cutscene
+	public static void protect(ServerPlayer player, int ticks) {
+		PROTECTED_UNTIL.merge(player.getUUID(), player.level().getGameTime() + ticks, Math::max);
 	}
 
 	private static void onIncomingDamage(LivingIncomingDamageEvent event) {
@@ -120,18 +129,24 @@ public class MonumentIntro {
 	}
 
 	private static int clear(CommandSourceStack source, Collection<ServerPlayer> players) {
-		for (ServerPlayer player : players)
+		int vents = 0;
+		for (ServerPlayer player : players) {
 			player.setData(SEEN_MONUMENT, false);
+			// The vent cutscene plays once per monument, so rebuild the vent of the monument the player is in
+			if (io.github.strawberrymc.monument.PrismaticSensors.resetVent(player.level(), player.blockPosition()))
+				vents++;
+		}
+		String reset = vents == 0 ? "" : vents == 1 ? " and reset the monument vent" : " and reset " + vents + " monument vents";
 		source.sendSuccess(() -> players.size() == 1
-			? Component.literal("Cleared cutscene(s) for " + players.iterator().next().getName().getString())
-			: Component.literal("Cleared cutscene(s) for " + players.size() + " players"), true);
+			? Component.literal("Cleared cutscene(s) for " + players.iterator().next().getName().getString() + reset)
+			: Component.literal("Cleared cutscene(s) for " + players.size() + " players" + reset), true);
 		return players.size();
 	}
 
 	private static void registerPayloads(RegisterPayloadHandlersEvent event) {
 		// The handler only runs on the client, so the client-only cutscene class is never loaded on a server
-		event.registrar("2").playToClient(PlayCutscene.TYPE, PlayCutscene.STREAM_CODEC,
-			(payload, context) -> MonumentCutscene.start(payload.min(), payload.max(), payload.entrance()));
+		event.registrar("3").playToClient(PlayCutscene.TYPE, PlayCutscene.STREAM_CODEC,
+			(payload, context) -> MonumentCutscene.start(payload.min(), payload.max(), payload.entrance(), payload.vent(), payload.sensor()));
 	}
 
 	private static void addPack(AddPackFindersEvent event) {
@@ -153,11 +168,15 @@ public class MonumentIntro {
 		BoundingBox box = building.getBoundingBox();
 		// The entrance is on the building's local front (z=0), which is the side opposite its orientation
 		Direction entrance = building.getOrientation() == null ? Direction.SOUTH : building.getOrientation().getOpposite();
+		MonumentShell.Layout layout = MonumentShell.layout(building);
+		// The sensor nearest the player, whose chunks are sure to be loaded on their client
+		BlockPos sensor = layout.sensors().stream().min(java.util.Comparator.comparingDouble(pos -> pos.distSqr(player.blockPosition()))).orElseThrow();
 		player.setData(SEEN_MONUMENT, true);
 		PROTECTED_UNTIL.put(player.getUUID(), level.getGameTime() + CUTSCENE_TICKS);
 		// Guardians already attacking the player stop; onChangeTarget keeps them (and anything else) from starting again
 		for (Mob mob : level.getEntitiesOfClass(Mob.class, player.getBoundingBox().inflate(64), mob -> mob.getTarget() == player))
 			mob.setTarget(null);
-		PacketDistributor.sendToPlayer(player, new PlayCutscene(new BlockPos(box.minX(), box.minY(), box.minZ()), new BlockPos(box.maxX(), box.maxY(), box.maxZ()), entrance));
+		PacketDistributor.sendToPlayer(player, new PlayCutscene(new BlockPos(box.minX(), box.minY(), box.minZ()), new BlockPos(box.maxX(), box.maxY(), box.maxZ()), entrance,
+			layout.ventCenter(), sensor));
 	}
 }

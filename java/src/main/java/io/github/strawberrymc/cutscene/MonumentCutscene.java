@@ -28,36 +28,36 @@ import net.neoforged.neoforge.client.event.ViewportEvent;
 import javax.annotation.Nullable;
 
 // Cutscene played the first time a player enters an ocean monument (started by MonumentIntro): the spooky chime plays
-// and the camera films the monument in three scenes with "Ocean Monument" in the corner:
-//  1. it pans out from the player to a high diagonal view and sweeps sideways around the monument,
-//  2. cuts to the opposite side, lower down, drifting slowly sideways,
-//  3. cuts to the front of the monument, pushing in towards the entrance gate,
-// then dips to black and returns to the player. While it runs the HUD, hand, water overlay and water fog are hidden
-// and night vision lights up the monument, which sits too deep for any daylight to reach.
+// and the camera visits the monument in five close shots, cutting through black between them:
+//  1. it pans out from the player to the entrance gate and pushes in towards it,
+//  2. rises up a front corner, past the tiered walls,
+//  3. circles the gazebo on the roof, with its hanging lump of Cracked Prismarine,
+//  4. circles a Prismatic Sensor in the hall,
+//  5. rises up the front of the monument to the gazebo while "Ocean Monument" appears in the corner,
+// then dips to black and returns to the player. The client only draws chunks within its render distance of the player,
+// which can be less than the monument is wide, so the corner, the sensor and the last shot's side are whichever are
+// nearest the player, and every shot stays close to what it films. While it runs the HUD, hand, water overlay and water fog are hidden and night
+// vision lights up the monument, which sits too deep for any daylight to reach.
 //
-// The camera never passes through blocks: each scene keeps a clear line of sight from a point it knows is open (just
-// above the roof, or just outside the monument's walls), pulling in when terrain is in the way and easing back out
-// once it clears. When the path from the player to the first scene is blocked (as it is from inside the monument), it
-// dips to black and cuts instead of flying through walls. CutsceneCameraMixin applies the shot to the camera every frame.
+// The camera never passes through blocks: each shot keeps a clear line of sight from a point it knows is open (in front
+// of a wall, inside the gazebo, above the sensor), pulling in when something is in the way and easing back out once it
+// clears. When the path from the player to the first shot is blocked (as it is from inside the monument), it dips to
+// black and cuts instead of flying through walls. CutsceneCameraMixin applies the shot to the camera every frame.
 @EventBusSubscriber(modid = "strawberrymc", value = Dist.CLIENT)
 public class MonumentCutscene {
 	private static final SoundEvent CHIME = SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath("strawberrymc", "monument_chime"));
 
 	private static final int DURATION = MonumentIntro.CUTSCENE_TICKS;
 	private static final int PAN_IN = 30;
-	// When the second and third scenes start; the cutscene ends with a dip to black back to the player
-	private static final int SCENE_2 = 100;
-	private static final int SCENE_3 = 175;
-	// Half of a dip to black, used between scenes and wherever the pan path is blocked
+	// When each shot starts; the last one runs until the final dip back to the player
+	private static final int[] SHOTS = {0, 85, 160, 240, 315};
+	// Half of a dip to black, used between shots and wherever the pan path is blocked
 	private static final int DIP = 10;
 	// Half of the slower dip to black at the end, back to the player
 	private static final int END_DIP = 25;
-	// Sideways sweep of the first scene, centred on the diagonal nearest the player, and the slower drift of the second
-	private static final float SWEEP_DEGREES = 35;
-	private static final float DRIFT_DEGREES = 20;
 	// How far the camera stays from whatever is blocking its view
 	private static final double CLIP_MARGIN = 1.0;
-	private static final double MIN_DISTANCE = 4.0;
+	private static final double MIN_DISTANCE = 3.0;
 	// Fraction of the remaining distance regained per tick once an obstruction clears
 	private static final double CLIP_RECOVERY = 0.12;
 	// Night vision and the cleared fog fade in at the start, then fade out from the start of the final dip to this many ticks after
@@ -69,25 +69,24 @@ public class MonumentCutscene {
 	public record Shot(Vec3 position, float yaw, float pitch) {
 	}
 
-	// Where a scene wants the camera, the open point its line of sight is checked from, and what it looks at
+	// Where a shot wants the camera, the open point its line of sight is checked from, and what it looks at
 	private record Framing(Vec3 anchor, Vec3 desired, Vec3 target) {
 	}
 
 	private static boolean active;
 	private static int ticks;
+	// The monument's centre at floor level, half its width, and its entrance's outward and sideways directions
 	private static Vec3 center;
-	private static Vec3 lookTarget;
-	// Clear point just above the roof that the first scene's line of sight is checked from
-	private static Vec3 anchor;
 	private static double halfWidth;
-	private static double boxHeight;
-	private static double radius;
-	private static double height;
-	private static float startAngle;
-	// Horizontal direction the entrance gate faces
+	private static double shellHeight;
 	private static Vec3 entranceNormal;
+	private static Vec3 side;
+	// Horizontal direction from the monument's centre to the player, so shots favour the side whose chunks are loaded
+	private static Vec3 towardPlayer;
+	private static Vec3 vent;
+	private static Vec3 sensor;
 	private static boolean dipIn;
-	private static int lastScene;
+	private static int lastShot;
 	private static double clipDistance;
 	private static float lastFrameTime;
 	private static boolean addedNightVision;
@@ -95,31 +94,28 @@ public class MonumentCutscene {
 	private static boolean fading;
 	private static int fadeTicks;
 
-	public static void start(BlockPos min, BlockPos max, Direction entrance) {
+	public static void start(BlockPos min, BlockPos max, Direction entrance, BlockPos ventPos, BlockPos sensorPos) {
 		Minecraft minecraft = Minecraft.getInstance();
 		LocalPlayer player = minecraft.player;
 		if (player == null || active)
 			return;
 		center = new Vec3((min.getX() + max.getX() + 1) / 2.0, min.getY(), (min.getZ() + max.getZ() + 1) / 2.0);
-		boxHeight = max.getY() - min.getY();
-		lookTarget = center.add(0, boxHeight * 0.4, 0);
-		anchor = new Vec3(center.x, max.getY() + 2.5, center.z);
 		halfWidth = Math.max(max.getX() - min.getX() + 1, max.getZ() - min.getZ() + 1) / 2.0;
-		radius = halfWidth * 2.1;
-		height = max.getY() + 12 - center.y;
+		vent = Vec3.atBottomCenterOf(ventPos.above());
+		shellHeight = vent.y - center.y;
+		sensor = Vec3.atCenterOf(sensorPos);
 		entranceNormal = new Vec3(entrance.getStepX(), 0, entrance.getStepZ());
-		// Diagonal nearest to the side the player came from
-		double playerAngle = Math.toDegrees(Math.atan2(player.getZ() - center.z, player.getX() - center.x));
-		startAngle = (float) (Math.round((playerAngle - 45) / 90) * 90 + 45 - SWEEP_DEGREES / 2);
+		side = new Vec3(-entranceNormal.z, 0, entranceNormal.x);
+		towardPlayer = new Vec3(player.getX() - center.x, 0, player.getZ() - center.z);
+		towardPlayer = towardPlayer.lengthSqr() < 0.01 ? entranceNormal : towardPlayer.normalize();
 
 		active = true;
 		ticks = 0;
 		lastFrameTime = 0;
-		lastScene = 1;
+		lastShot = 0;
 		clipDistance = Double.MAX_VALUE;
-		Vec3 eye = player.getEyePosition();
-		Vec3 firstShot = clipFrom(anchor, orbitPosition(0), Double.MAX_VALUE);
-		dipIn = isBlocked(eye, firstShot);
+		Framing first = framing(0, 0);
+		dipIn = isBlocked(player.getEyePosition(), clipFrom(first.anchor(), first.desired(), Double.MAX_VALUE));
 
 		// Its strength comes from nightVisionScale, so the duration only has to outlast the fade. A night vision effect the
 		// player already had is left alone (unless it's this cutscene's own, still fading out)
@@ -161,53 +157,81 @@ public class MonumentCutscene {
 		if (time >= DURATION - END_DIP)
 			return new Shot(eye, eyeYaw, eyePitch);
 
-		int scene = time < SCENE_2 ? 1 : time < SCENE_3 ? 2 : 3;
-		if (scene != lastScene) {
-			lastScene = scene;
+		int shot = SHOTS.length - 1;
+		while (time < SHOTS[shot])
+			shot--;
+		if (shot != lastShot) {
+			lastShot = shot;
 			clipDistance = Double.MAX_VALUE;
 		}
-		Framing framing = scene == 1 ? new Framing(anchor, orbitPosition(time), lookTarget) : scene == 2 ? farSide(time) : entrance(time);
+		int end = shot + 1 < SHOTS.length ? SHOTS[shot + 1] : DURATION - END_DIP;
+		Framing framing = framing(shot, (time - SHOTS[shot]) / (end - SHOTS[shot]));
 
 		// The line of sight shrinks instantly when blocked and grows back smoothly
 		double free = freeDistance(framing.anchor(), framing.desired());
 		double frameTicks = Math.max(0, time - lastFrameTime);
 		lastFrameTime = time;
 		clipDistance = free < clipDistance ? free : clipDistance + (free - clipDistance) * Math.min(1, CLIP_RECOVERY * frameTicks);
-		Shot shot = lookingAt(clipFrom(framing.anchor(), framing.desired(), clipDistance), framing.target());
+		Shot view = lookingAt(clipFrom(framing.anchor(), framing.desired(), clipDistance), framing.target());
 
-		if (scene == 1 && time < PAN_IN) {
+		if (shot == 0 && time < PAN_IN) {
 			if (dipIn)
-				return time < DIP ? new Shot(eye, eyeYaw, eyePitch) : shot;
-			return blend(eye, eyeYaw, eyePitch, shot.position(), ease(time / PAN_IN));
+				return time < DIP ? new Shot(eye, eyeYaw, eyePitch) : view;
+			return blend(eye, eyeYaw, eyePitch, view.position(), framing.target(), ease(time / PAN_IN));
 		}
-		return shot;
+		return view;
 	}
 
-	// Scene 1: high above, sweeping sideways around the diagonal nearest the player
-	private static Vec3 orbitPosition(float time) {
-		double angle = Math.toRadians(startAngle + SWEEP_DEGREES * time / SCENE_2);
-		return new Vec3(center.x + Math.cos(angle) * radius, center.y + height, center.z + Math.sin(angle) * radius);
+	private static Framing framing(int shot, float progress) {
+		float p = ease(progress);
+		switch (shot) {
+			case 0 -> {
+				// The entrance gate, pushing in
+				Vec3 gate = center.add(entranceNormal.scale(halfWidth)).add(0, 8, 0);
+				Vec3 desired = gate.add(entranceNormal.scale(Mth.lerp(p, 30, 17))).add(0, Mth.lerp(p, 8, 3), 0);
+				return new Framing(gate.add(entranceNormal.scale(3)).add(0, 4, 0), desired, gate.subtract(entranceNormal.scale(6)).subtract(0, 1, 0));
+			}
+			case 1 -> {
+				// The corner nearest the player, rising while looking in across the tiered walls towards the middle
+				Vec3 out = diagonal(towardPlayer, 0);
+				Vec3 corner = center.add(out.scale(halfWidth * Math.sqrt(2)));
+				Vec3 across = new Vec3(-out.z, 0, out.x);
+				double height = Mth.lerp(p, 6, shellHeight * 0.55);
+				Vec3 desired = corner.add(out.scale(14)).add(across.scale(Mth.lerp(p, -5, 5))).add(0, height, 0);
+				return new Framing(corner.add(out.scale(3)).add(0, height, 0), desired, corner.subtract(out.scale(34)).add(0, height * 0.8, 0));
+			}
+			case 2 -> {
+				// Around the gazebo, between its pillars, looking up at the dome under its roof
+				double base = Math.toDegrees(Math.atan2(towardPlayer.z, towardPlayer.x)) - 25;
+				double angle = Math.toRadians(base + 50 * p);
+				Vec3 direction = new Vec3(Math.cos(angle), 0, Math.sin(angle));
+				Vec3 dome = vent.add(0, 5, 0);
+				return new Framing(vent.add(direction.scale(2.5)).add(0, 1.2, 0), vent.add(direction.scale(18)).add(0, 3, 0), dome.subtract(0, 1.5, 0));
+			}
+			case 3 -> {
+				// Around a Prismatic Sensor, from the hall side
+				Vec3 inward = new Vec3(center.x - sensor.x, 0, center.z - sensor.z).normalize();
+				double angle = Math.atan2(inward.z, inward.x) + Math.toRadians(Mth.lerp(p, -25, 25));
+				Vec3 direction = new Vec3(Math.cos(angle), 0, Math.sin(angle));
+				Vec3 above = sensor.add(0, 1.2, 0);
+				return new Framing(above, sensor.add(direction.scale(Mth.lerp(p, 6, 4.5))).add(0, 1.5, 0), sensor.subtract(0, 0.2, 0));
+			}
+			default -> {
+				// Rising over the corner of the roof nearest the player with the gazebo ahead, for the title
+				Vec3 diagonal = diagonal(towardPlayer, 0);
+				double height = Mth.lerp(p, shellHeight * 0.7, shellHeight + 16);
+				Vec3 desired = center.add(diagonal.scale(46)).add(0, height, 0);
+				Vec3 anchor = center.add(diagonal.scale(24)).add(0, shellHeight + 4, 0);
+				return new Framing(anchor, desired, vent.add(0, 2, 0));
+			}
+		}
 	}
 
-	// Scene 2: the opposite diagonal, lower down at about the height of the side wings, drifting sideways
-	private static Framing farSide(float time) {
-		float progress = (time - SCENE_2) / (SCENE_3 - SCENE_2);
-		double angle = Math.toRadians(startAngle + SWEEP_DEGREES / 2 + 180 + DRIFT_DEGREES * (progress - 0.5));
-		Vec3 direction = new Vec3(Math.cos(angle), 0, Math.sin(angle));
-		double y = center.y + boxHeight * 0.55;
-		// Just outside the walls, wherever along them this direction leaves the monument
-		double edge = halfWidth / Math.max(Math.abs(direction.x), Math.abs(direction.z));
-		Vec3 base = new Vec3(center.x, y, center.z);
-		return new Framing(base.add(direction.scale(edge + 3)), base.add(direction.scale(radius * 0.85)), lookTarget);
-	}
-
-	// Scene 3: in front of the monument at gate height, pushing in towards the entrance
-	private static Framing entrance(float time) {
-		float progress = ease((time - SCENE_3) / (DURATION - END_DIP - SCENE_3));
-		Vec3 gate = center.add(entranceNormal.scale(halfWidth));
-		Vec3 desired = gate.add(entranceNormal.scale(Mth.lerp(progress, 26, 12))).add(0, 6, 0);
-		// Looking a little way into the arches rather than at the wall's edge
-		return new Framing(gate.add(entranceNormal.scale(2)).add(0, 5, 0), desired, gate.subtract(entranceNormal.scale(8)).add(0, 4, 0));
+	// The monument's diagonal (45 degrees from its walls) nearest a direction
+	private static Vec3 diagonal(Vec3 direction, double offsetDegrees) {
+		double angle = Math.toDegrees(Math.atan2(direction.z, direction.x));
+		angle = Math.toRadians(Math.round((angle - 45) / 90) * 90 + 45 + offsetDegrees);
+		return new Vec3(Math.cos(angle), 0, Math.sin(angle));
 	}
 
 	private static Shot lookingAt(Vec3 position, Vec3 target) {
@@ -217,9 +241,9 @@ public class MonumentCutscene {
 		return new Shot(position, yaw, pitch);
 	}
 
-	// t=0 is the player's own view, t=1 is the first scene; the view turns towards the monument as the camera moves out
-	private static Shot blend(Vec3 eye, float eyeYaw, float eyePitch, Vec3 orbit, float t) {
-		Shot look = lookingAt(eye.lerp(orbit, t), lookTarget);
+	// t=0 is the player's own view, t=1 is the first shot; the view turns towards the target as the camera moves out
+	private static Shot blend(Vec3 eye, float eyeYaw, float eyePitch, Vec3 to, Vec3 target, float t) {
+		Shot look = lookingAt(eye.lerp(to, t), target);
 		return new Shot(look.position(), eyeYaw + Mth.wrapDegrees(look.yaw() - eyeYaw) * t, Mth.lerp(t, eyePitch, look.pitch()));
 	}
 
@@ -321,7 +345,8 @@ public class MonumentCutscene {
 		graphics.fill(0, height - barHeight, width, height, 0xFF000000);
 
 		// Title in the bottom-left corner
-		float titleAlpha = Math.min(ease((time - 28) / 20), ease((DURATION - 34 - time) / 20));
+		float titleStart = SHOTS[SHOTS.length - 1] + 15;
+		float titleAlpha = Math.min(ease((time - titleStart) / 20), ease((DURATION - END_DIP - 5 - time) / 15));
 		if (titleAlpha > 0.02F) {
 			int alpha = (int) (titleAlpha * 255) << 24;
 			float scale = 2.5F;
@@ -332,7 +357,7 @@ public class MonumentCutscene {
 			graphics.pose().scale(scale, scale);
 			graphics.text(minecraft.font, "Ocean Monument", 0, 0, alpha | TITLE_COLOR, true);
 			graphics.pose().popMatrix();
-			int lineWidth = (int) (minecraft.font.width("Ocean Monument") * scale * ease((time - 28) / 30));
+			int lineWidth = (int) (minecraft.font.width("Ocean Monument") * scale * ease((time - titleStart) / 30));
 			graphics.fill(x, y + 25, x + lineWidth, y + 26, (int) (titleAlpha * 200) << 24 | TITLE_COLOR);
 		}
 
@@ -340,8 +365,10 @@ public class MonumentCutscene {
 		float black = 0;
 		if (dipIn && time < PAN_IN)
 			black = time < DIP ? time / DIP : 1 - (time - DIP) / (PAN_IN - DIP);
-		for (int cut : new int[] {SCENE_2, SCENE_3})
+		for (int i = 1; i < SHOTS.length; i++) {
+			int cut = SHOTS[i];
 			black = Math.max(black, 1 - Math.abs(time - cut) / DIP);
+		}
 		black = Math.max(black, 1 - Math.abs(time - (DURATION - END_DIP)) / END_DIP);
 		if (black > 0)
 			graphics.fill(0, 0, width, height, (int) (Mth.clamp(black, 0, 1) * 255) << 24);

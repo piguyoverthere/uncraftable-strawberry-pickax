@@ -4474,6 +4474,74 @@
           "src/main/resources/data/strawberrymc/neoforge/biome_modifier/alpine_fir_biome_modifier.json"
         ]
       }
+    },
+    {
+      "name": "PrismaticSensor",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prismatic_sensor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/strawberrymc/items/prismatic_sensor.json",
+          "src/main/resources/assets/strawberrymc/blockstates/prismatic_sensor.json",
+          "src/main/resources/assets/strawberrymc/models/item/prismatic_sensor.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/prismatic_sensor.json",
+          "src/main/java/io/github/strawberrymc/block/PrismaticSensorBlock.java",
+          "src/main/resources/assets/strawberrymc/models/block/prismatic_sensor.json"
+        ]
+      }
+    },
+    {
+      "name": "DeactivatedPrismaticSensor",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "deactivated_prismatic_sensor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/strawberrymc/blockstates/deactivated_prismatic_sensor.json",
+          "src/main/resources/assets/strawberrymc/models/item/deactivated_prismatic_sensor.json",
+          "src/main/resources/assets/strawberrymc/items/deactivated_prismatic_sensor.json",
+          "src/main/resources/assets/strawberrymc/models/block/deactivated_prismatic_sensor.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/deactivated_prismatic_sensor.json",
+          "src/main/java/io/github/strawberrymc/block/DeactivatedPrismaticSensorBlock.java"
+        ]
+      }
+    },
+    {
+      "name": "AncientPrismarine",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ancient_prismarine",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/AncientPrismarineBlock.java",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/ancient_prismarine.json",
+          "src/main/resources/assets/strawberrymc/models/item/ancient_prismarine.json",
+          "src/main/resources/assets/strawberrymc/models/block/ancient_prismarine.json",
+          "src/main/resources/assets/strawberrymc/blockstates/ancient_prismarine.json",
+          "src/main/resources/assets/strawberrymc/items/ancient_prismarine.json"
+        ]
+      }
+    },
+    {
+      "name": "CrackedPrismarine",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cracked_prismarine",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/strawberrymc/models/item/cracked_prismarine.json",
+          "src/main/resources/assets/strawberrymc/models/block/cracked_prismarine.json",
+          "src/main/resources/assets/strawberrymc/blockstates/cracked_prismarine.json",
+          "src/main/resources/assets/strawberrymc/items/cracked_prismarine.json",
+          "src/main/java/io/github/strawberrymc/block/CrackedPrismarineBlock.java",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/cracked_prismarine.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -4633,6 +4701,8 @@
       "~FarmlandStrawberry@CUSTOM:FarmlandStrawberry"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CrackedPrismarine@CUSTOM:CrackedPrismarine",
+      "~AncientPrismarine@CUSTOM:AncientPrismarine",
       "~Voidstone@CUSTOM:Voidstone",
       "~GlowrootTuberStone@CUSTOM:GlowrootTuberStone",
       "~RadoniteBlock@CUSTOM:RadoniteBlock",
@@ -5028,7 +5098,11 @@
       "item.strawberrymc.fir_tree_spawner": "Fir Tree Spawner",
       "item.strawberrymc.fir_snag_spawner": "Fir Snag Spawner",
       "item.strawberrymc.dead_fir_spawner": "Dead Fir Spawner",
-      "item.strawberrymc.master_fir_spawner": "Master Fir Spawner"
+      "item.strawberrymc.master_fir_spawner": "Master Fir Spawner",
+      "item.strawberrymc.prismatic_sensor": "Prismatic Sensor",
+      "item.strawberrymc.deactivated_prismatic_sensor": "Deactivated Prismatic Sensor",
+      "item.strawberrymc.ancient_prismarine": "Ancient Prismarine",
+      "item.strawberrymc.cracked_prismarine": "Cracked Prismarine"
     }
   },
   "metadata": {

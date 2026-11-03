@@ -105,6 +105,10 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> FIR_SNAG_SPAWNER;
 	public static final DeferredBlock<Block> DEAD_FIR_SPAWNER;
 	public static final DeferredBlock<Block> MASTER_FIR_SPAWNER;
+	public static final DeferredBlock<Block> PRISMATIC_SENSOR;
+	public static final DeferredBlock<Block> DEACTIVATED_PRISMATIC_SENSOR;
+	public static final DeferredBlock<Block> ANCIENT_PRISMARINE;
+	public static final DeferredBlock<Block> CRACKED_PRISMARINE;
 	static {
 		CHORINE_ORE = register("chorine_ore", ChorineOreBlock::new);
 		CHORINE_BLOCK = register("chorine_block", ChorineBlockBlock::new);
@@ -187,6 +191,10 @@ public class StrawberrymcModBlocks {
 		FIR_SNAG_SPAWNER = register("fir_snag_spawner", FirSnagSpawnerBlock::new);
 		DEAD_FIR_SPAWNER = register("dead_fir_spawner", DeadFirSpawnerBlock::new);
 		MASTER_FIR_SPAWNER = register("master_fir_spawner", MasterFirSpawnerBlock::new);
+		PRISMATIC_SENSOR = register("prismatic_sensor", PrismaticSensorBlock::new);
+		DEACTIVATED_PRISMATIC_SENSOR = register("deactivated_prismatic_sensor", DeactivatedPrismaticSensorBlock::new);
+		ANCIENT_PRISMARINE = register("ancient_prismarine", AncientPrismarineBlock::new);
+		CRACKED_PRISMARINE = register("cracked_prismarine", CrackedPrismarineBlock::new);
 	}
 
 	// Start of user code block custom blocks

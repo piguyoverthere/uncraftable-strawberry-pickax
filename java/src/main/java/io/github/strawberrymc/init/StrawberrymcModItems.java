@@ -124,6 +124,10 @@ public class StrawberrymcModItems {
 	public static final DeferredItem<Item> FIR_SNAG_SPAWNER;
 	public static final DeferredItem<Item> DEAD_FIR_SPAWNER;
 	public static final DeferredItem<Item> MASTER_FIR_SPAWNER;
+	public static final DeferredItem<Item> PRISMATIC_SENSOR;
+	public static final DeferredItem<Item> DEACTIVATED_PRISMATIC_SENSOR;
+	public static final DeferredItem<Item> ANCIENT_PRISMARINE;
+	public static final DeferredItem<Item> CRACKED_PRISMARINE;
 	static {
 		CHORINE = register("chorine", ChorineItem::new);
 		CHORINE_ORE = block(StrawberrymcModBlocks.CHORINE_ORE);
@@ -232,6 +236,10 @@ public class StrawberrymcModItems {
 		FIR_SNAG_SPAWNER = block(StrawberrymcModBlocks.FIR_SNAG_SPAWNER);
 		DEAD_FIR_SPAWNER = block(StrawberrymcModBlocks.DEAD_FIR_SPAWNER);
 		MASTER_FIR_SPAWNER = block(StrawberrymcModBlocks.MASTER_FIR_SPAWNER);
+		PRISMATIC_SENSOR = block(StrawberrymcModBlocks.PRISMATIC_SENSOR);
+		DEACTIVATED_PRISMATIC_SENSOR = block(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR);
+		ANCIENT_PRISMARINE = block(StrawberrymcModBlocks.ANCIENT_PRISMARINE);
+		CRACKED_PRISMARINE = block(StrawberrymcModBlocks.CRACKED_PRISMARINE);
 	}
 
 	// Start of user code block custom items

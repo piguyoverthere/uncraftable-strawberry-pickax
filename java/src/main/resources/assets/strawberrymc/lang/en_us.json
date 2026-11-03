@@ -160,5 +160,9 @@
   "item.strawberrymc.fir_tree_spawner": "Fir Tree Spawner",
   "item.strawberrymc.fir_snag_spawner": "Fir Snag Spawner",
   "item.strawberrymc.dead_fir_spawner": "Dead Fir Spawner",
-  "item.strawberrymc.master_fir_spawner": "Master Fir Spawner"
+  "item.strawberrymc.master_fir_spawner": "Master Fir Spawner",
+  "item.strawberrymc.prismatic_sensor": "Prismatic Sensor",
+  "item.strawberrymc.deactivated_prismatic_sensor": "Deactivated Prismatic Sensor",
+  "item.strawberrymc.ancient_prismarine": "Ancient Prismarine",
+  "item.strawberrymc.cracked_prismarine": "Cracked Prismarine"
 }

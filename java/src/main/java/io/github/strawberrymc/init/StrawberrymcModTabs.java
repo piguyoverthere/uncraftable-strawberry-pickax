@@ -30,6 +30,8 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.FIR_SNAG_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.DEAD_FIR_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.PRISMATIC_SENSOR.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent
@@ -93,6 +95,8 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModBlocks.JUNIPER_TRAPDOOR.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.JUNIPER_PRESSURE_PLATE.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.JUNIPER_BUTTON.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.ANCIENT_PRISMARINE.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CRACKED_PRISMARINE.get().asItem());
 		} else if (tabData.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
 			tabData.accept(StrawberrymcModBlocks.ECHOWOOD_LEAVES.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.PALM_LEAVES.get().asItem());
@@ -152,6 +156,8 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.FIR_SNAG_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.DEAD_FIR_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.PRISMATIC_SENSOR.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR.get().asItem());
 			}
 		} else if (tabData.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
 			tabData.accept(StrawberrymcModItems.COCONUT.get());
