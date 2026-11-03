@@ -1,50 +1,50 @@
+/setblock ~ ~ ~ minecraft:glowstone
+/effect give @s minecraft:night_vision infinite
+/effect clear
+/effect give @s minecraft:night_vision infinite
 /gamemode spectator
+/gamemode survival
 /gamemode creative
-/setblock ~ ~ ~ minecraft:structure_block
-/give @s strawberrymc:fir_tree_spawner
 /time set minecraft:day
-/setblock ~ ~ ~ minecraft:fletching_table
-/give @s minecraft:arrow 100
-/give @s minecraft:gold_ingot 100
-/give @s minecraft:blaze_rod 100
-/give @s strawberrymc:iron_bow
-/setblock ~ ~ ~ minecraft:fletching_table
-/give @s minecraft:breeze_rod 100
-/give @s minecraft:arrow 100
-/give @s arrow 10
-/summon minecraft:warden
-/time set minecraft:day
-/give @s strawberrymc:fir_tree_spawner
-/setblock ~ ~ ~ minecraft:structure_block
-/gamemode spectator
-/locate biome strawberrymc:crystal_hollows
-/tp @s -14 15 -24
-/locate biome strawberrymc:alpine_meadow
-/tp @s 1082 0 1737
-/tp 1000 100 10000
-/locate biome strawberrymc:alpine_meadow
-/tp @s 3304 36 13200
-/locate biome strawberrymc:alpine_meadow
-/tp @s -213 181 276
-/locate biome strawberrymc:alpine_meadow
-/tp @s -439 158 258
-/locate biome strawberrymc:alpine_meadow
-/tp @s 55 150 0
-/locate biome strawberrymc:alpine_meadow
-/tp @s 998 147 -1277
-/locate biome strawberrymc:alpine_meadow
-/tp @s -33 132 522
+/locate structure minecraft:monument
+/tp @s -1360 ~ -4560
+/effect give @s minecraft:night_vision infinite
 /locate biome strawberrymc:ocean_abyss
-/tp @s 300 133 2041
+/tp @s -359 119 1385
+/effect give @s minecraft:night_vision infinite
+/gamemode spectator
+/locate structure minecraft:monument
+/tp @s 784 ~ 3280
+/gamemode creative
+/locate structure minecraft:monument
+/tp @s -4560 ~ -4416
+/cutscene clear
+/kill @s
+/gamemode creative
 /locate structure minecraft:monument
 /tp @s 304 ~ 2208
-/locate structure minecraft:monument
-/tp @s -992 ~ -448
 /gamemode spectator
+/cutscene clear
+/place structure strawberrymc:monument_puzzles/p2_test ~ ~ ~
+/kill @s
+/give @s strawberrymc:scripter
+/time set minecraft:day
+/weather rain
+/locate structure minecraft:monument
+/tp @s -4016 ~ -1888
+/time set minecraft:day
+/cutscene clear
+/locate structure minecraft:monument
+/tp @s -960 ~ -400
 /effect give @s minecraft:night_vision infinite
+/locate structure minecraft:monument
+/tp @s 2720 ~ -3392
+/tp 10000 100 10000000
+/locate structure minecraft:monument
+/tp @s 9840 ~ 10000448
 /gamemode creative
-/locate biome strawberrymc:alpine_meadow
-/tp @s 776 132 -1599
-/tp @s 10000 100 100000
-/locate biome strawberrymc:alpine_meadow
-/tp @s 9520 100 100512
+/locate structure minecraft:monument
+/tp @s 64 ~ -336
+/give @s strawberrymc:monument_key
+/give @s minecraft:vault
+/give @s strawberrymc:prismatic_vault

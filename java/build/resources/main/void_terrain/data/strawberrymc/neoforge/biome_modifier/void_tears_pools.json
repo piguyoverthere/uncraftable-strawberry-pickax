@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "strawberrymc:abyssal_plains",
+    "strawberrymc:echoing_deep",
+    "strawberrymc:voidstone_peaks"
+  ],
+  "features": "strawberrymc:void_tears_pool",
+  "step": "lakes"
+}

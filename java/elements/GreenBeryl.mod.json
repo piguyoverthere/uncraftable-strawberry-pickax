@@ -3,7 +3,7 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "placeholder",
+    "texture": "green_beryl",
     "customModelName": "Normal",
     "guiTexture": "",
     "customProperties": {},

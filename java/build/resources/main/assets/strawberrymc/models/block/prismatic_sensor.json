@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "strawberrymc:block/prismatic_sensor_top",
+    "up": "strawberrymc:block/prismatic_sensor_top",
+    "north": "strawberrymc:block/prismatic_sensor_side",
+    "east": "strawberrymc:block/prismatic_sensor_side",
+    "south": "strawberrymc:block/prismatic_sensor_side",
+    "west": "strawberrymc:block/prismatic_sensor_side",
+    "particle": "strawberrymc:block/prismatic_sensor_top"
+  }
+}

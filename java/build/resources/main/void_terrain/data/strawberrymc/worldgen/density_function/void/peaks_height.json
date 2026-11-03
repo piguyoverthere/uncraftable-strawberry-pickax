@@ -1,0 +1,96 @@
+{
+  "type": "minecraft:flat_cache",
+  "argument": {
+    "type": "minecraft:mul",
+    "argument1": "strawberrymc:void/peaks_mask",
+    "argument2": {
+      "type": "minecraft:add",
+      "argument1": 1,
+      "argument2": {
+        "type": "minecraft:add",
+        "argument1": {
+          "type": "minecraft:mul",
+          "argument1": 6,
+          "argument2": {
+            "type": "minecraft:mul",
+            "argument1": {
+              "type": "minecraft:add",
+              "argument1": 1,
+              "argument2": {
+                "type": "minecraft:mul",
+                "argument1": -1,
+                "argument2": {
+                  "type": "minecraft:abs",
+                  "argument": {
+                    "type": "minecraft:noise",
+                    "noise": "strawberrymc:void_peaks",
+                    "xz_scale": 1,
+                    "y_scale": 0
+                  }
+                }
+              }
+            },
+            "argument2": {
+              "type": "minecraft:add",
+              "argument1": 1,
+              "argument2": {
+                "type": "minecraft:mul",
+                "argument1": -1,
+                "argument2": {
+                  "type": "minecraft:abs",
+                  "argument": {
+                    "type": "minecraft:noise",
+                    "noise": "strawberrymc:void_peaks",
+                    "xz_scale": 1,
+                    "y_scale": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "argument2": {
+          "type": "minecraft:mul",
+          "argument1": 2.5,
+          "argument2": {
+            "type": "minecraft:mul",
+            "argument1": {
+              "type": "minecraft:add",
+              "argument1": 1,
+              "argument2": {
+                "type": "minecraft:mul",
+                "argument1": -1,
+                "argument2": {
+                  "type": "minecraft:abs",
+                  "argument": {
+                    "type": "minecraft:noise",
+                    "noise": "strawberrymc:void_spires",
+                    "xz_scale": 1,
+                    "y_scale": 0
+                  }
+                }
+              }
+            },
+            "argument2": {
+              "type": "minecraft:add",
+              "argument1": 1,
+              "argument2": {
+                "type": "minecraft:mul",
+                "argument1": -1,
+                "argument2": {
+                  "type": "minecraft:abs",
+                  "argument": {
+                    "type": "minecraft:noise",
+                    "noise": "strawberrymc:void_spires",
+                    "xz_scale": 1,
+                    "y_scale": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "placeholder",
+    "texture": "flint_chip",
     "customModelName": "Normal",
     "guiTexture": "",
     "customProperties": {},

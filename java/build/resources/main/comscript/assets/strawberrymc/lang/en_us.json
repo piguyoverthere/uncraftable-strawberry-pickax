@@ -1,0 +1,8 @@
+{
+  "block.strawberrymc.scripter": "Scripter",
+  "gui.strawberrymc.scripter.title": "Scripter",
+  "gui.strawberrymc.scripter.run": "Run",
+  "gui.strawberrymc.scripter.stop": "Stop",
+  "gui.strawberrymc.scripter.clear": "Clear",
+  "gui.strawberrymc.scripter.terminal": "Terminal"
+}

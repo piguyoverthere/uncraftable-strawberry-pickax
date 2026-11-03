@@ -2,10 +2,12 @@
   "replace": false,
   "values": [
     "strawberrymc:voidstone",
+    "strawberrymc:cracked_prismarine",
     "strawberrymc:glowroot_tuber_stone",
     "strawberrymc:radonite_ore",
     "strawberrymc:chorine_ore",
     "strawberrymc:radonite_block",
+    "strawberrymc:ancient_prismarine",
     "strawberrymc:chorine_block"
   ]
 }

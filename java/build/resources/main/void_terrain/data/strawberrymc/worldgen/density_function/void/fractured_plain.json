@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:min",
+  "argument1": {
+    "type": "minecraft:min",
+    "argument1": {
+      "type": "minecraft:max",
+      "argument1": "strawberrymc:void/ground",
+      "argument2": {
+        "type": "minecraft:min",
+        "argument1": "strawberrymc:void/mountains",
+        "argument2": {
+          "type": "minecraft:min",
+          "argument1": "strawberrymc:void/canyons",
+          "argument2": "strawberrymc:void/tunnels"
+        }
+      }
+    },
+    "argument2": "strawberrymc:void/underside"
+  },
+  "argument2": "strawberrymc:void/cracks"
+}

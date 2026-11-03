@@ -3,6 +3,10 @@
   "package": "io.github.strawberrymc.custommixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "BiomeTemperatureInvoker",
+    "ItemFrameAccessor",
+    "MonumentBuildingShellMixin",
+    "StructurePieceBoxAccessor",
     "SurfaceBiomeDepthMixin",
     "OceanMonumentFloorMixin",
     "MonumentBuildingAccessor",
@@ -12,5 +16,9 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "minVersion": "0.8.4"
+  "minVersion": "0.8.4",
+  "client": [
+    "CutsceneCameraMixin",
+    "CutsceneNightVisionMixin"
+  ]
 }
