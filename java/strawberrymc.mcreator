@@ -4542,6 +4542,51 @@
           "src/main/resources/data/strawberrymc/loot_table/blocks/cracked_prismarine.json"
         ]
       }
+    },
+    {
+      "name": "MonumentKey",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "monument_key",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/item/MonumentKeyItem.java",
+          "src/main/resources/assets/strawberrymc/models/item/monument_key.json",
+          "src/main/resources/assets/strawberrymc/items/monument_key.json"
+        ]
+      }
+    },
+    {
+      "name": "PrismaticRune",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prismatic_rune",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/item/PrismaticRuneItem.java",
+          "src/main/resources/assets/strawberrymc/models/item/prismatic_rune.json",
+          "src/main/resources/assets/strawberrymc/items/prismatic_rune.json"
+        ]
+      }
+    },
+    {
+      "name": "PrismaticVault",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prismatic_vault",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/strawberrymc/blockstates/prismatic_vault.json",
+          "src/main/resources/assets/strawberrymc/items/prismatic_vault.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/prismatic_vault.json",
+          "src/main/resources/assets/strawberrymc/models/block/prismatic_vault.json",
+          "src/main/java/io/github/strawberrymc/block/PrismaticVaultBlock.java",
+          "src/main/resources/assets/strawberrymc/models/item/prismatic_vault.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -5102,7 +5147,10 @@
       "item.strawberrymc.prismatic_sensor": "Prismatic Sensor",
       "item.strawberrymc.deactivated_prismatic_sensor": "Deactivated Prismatic Sensor",
       "item.strawberrymc.ancient_prismarine": "Ancient Prismarine",
-      "item.strawberrymc.cracked_prismarine": "Cracked Prismarine"
+      "item.strawberrymc.cracked_prismarine": "Cracked Prismarine",
+      "item.strawberrymc.monument_key": "Monument Key",
+      "item.strawberrymc.prismatic_rune": "Prismatic Rune",
+      "item.strawberrymc.prismatic_vault": "Prismatic Vault"
     }
   },
   "metadata": {

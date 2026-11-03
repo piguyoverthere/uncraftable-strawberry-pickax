@@ -32,6 +32,7 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.PRISMATIC_SENSOR.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.PRISMATIC_VAULT.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent
@@ -48,6 +49,7 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.SMITE_VIAL.get());
 			tabData.accept(StrawberrymcModItems.GREEN_BERYL.get());
 			tabData.accept(StrawberrymcModItems.COCONUT_OIL.get());
+			tabData.accept(StrawberrymcModItems.PRISMATIC_RUNE.get());
 		} else if (tabData.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 			tabData.accept(StrawberrymcModBlocks.CHORINE_ORE.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.CHORINE_BLOCK.get().asItem());
@@ -137,6 +139,7 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.PALM_CHEST_BOAT.get());
 			tabData.accept(StrawberrymcModItems.JUNIPER_BOAT.get());
 			tabData.accept(StrawberrymcModItems.JUNIPER_CHEST_BOAT.get());
+			tabData.accept(StrawberrymcModItems.MONUMENT_KEY.get());
 		} else if (tabData.getTabKey() == CreativeModeTabs.COMBAT) {
 			tabData.accept(StrawberrymcModItems.RADONITE_SWORD.get());
 			tabData.accept(StrawberrymcModItems.RADONITE_ARMOR_HELMET.get());
@@ -158,6 +161,7 @@ public class StrawberrymcModTabs {
 				tabData.accept(StrawberrymcModBlocks.MASTER_FIR_SPAWNER.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.PRISMATIC_SENSOR.get().asItem());
 				tabData.accept(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR.get().asItem());
+				tabData.accept(StrawberrymcModBlocks.PRISMATIC_VAULT.get().asItem());
 			}
 		} else if (tabData.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
 			tabData.accept(StrawberrymcModItems.COCONUT.get());

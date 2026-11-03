@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-// While the monument or vent cutscene plays, the camera is placed at its shot instead of the player's eyes. The player stays
+// While the monument, vent or arena cutscene plays, the camera is placed at its shot instead of the player's eyes. The player stays
 // the camera entity, so nothing else about the game changes.
 @Mixin(Camera.class)
 public abstract class CutsceneCameraMixin {
@@ -21,8 +21,10 @@ public abstract class CutsceneCameraMixin {
 
 	@Inject(method = "alignWithEntity", at = @At("TAIL"))
 	private void strawberrymc$cutsceneShot(float partialTicks, CallbackInfo ci) {
-		MonumentCutscene.Shot shot = io.github.strawberrymc.monument.client.VentCutscene.isActive()
-			? io.github.strawberrymc.monument.client.VentCutscene.currentShot(partialTicks) : MonumentCutscene.currentShot(partialTicks);
+		MonumentCutscene.Shot shot = io.github.strawberrymc.monument.client.ArenaCutscene.isActive()
+			? io.github.strawberrymc.monument.client.ArenaCutscene.currentShot(partialTicks)
+			: io.github.strawberrymc.monument.client.VentCutscene.isActive()
+				? io.github.strawberrymc.monument.client.VentCutscene.currentShot(partialTicks) : MonumentCutscene.currentShot(partialTicks);
 		if (shot != null) {
 			this.setRotation(shot.yaw(), shot.pitch());
 			this.setPosition(shot.position());

@@ -198,6 +198,7 @@ public final class MonumentShell {
 			}
 		}
 		buildGazebo(level, chunkBB, layout);
+		buildArena(level, chunkBB, layout);
 		buildSensors(level, chunkBB, layout);
 	}
 
@@ -271,6 +272,104 @@ public final class MonumentShell {
 			set(level, chunkBB, cap, StrawberrymcModBlocks.ANCIENT_PRISMARINE.get().defaultBlockState());
 	}
 
+	// The boss arena in front of the gazebo: a round glass floor over a water tank sunk into the roof, decorated with sand,
+	// gravel, seagrass, coral and fish. The Prismatic Vault sits in the middle of the glass, and the Prismatic Rune waits in a
+	// fixed item frame on a pedestal at the bottom of the tank
+	private static void buildArena(WorldGenLevel level, BoundingBox chunkBB, Layout layout) {
+		BlockPos center = layout.arenaCenter();
+		int top = center.getY();
+		int radius = Layout.ARENA_RADIUS;
+		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+		for (int dx = -radius - 1; dx <= radius + 1; dx++) {
+			for (int dz = -radius - 1; dz <= radius + 1; dz++) {
+				double distance = Math.sqrt(dx * dx + dz * dz);
+				if (distance > radius + 1.2)
+					continue;
+				int x = center.getX() + dx, z = center.getZ() + dz;
+				if (x < chunkBB.minX() || x > chunkBB.maxX() || z < chunkBB.minZ() || z > chunkBB.maxZ())
+					continue;
+				boolean wall = distance > radius + 0.2;
+				RandomSource random = RandomSource.create(x * 341873128712L + z * 132897987541L);
+				for (int depth = 0; depth <= Layout.TANK_DEPTH + 2; depth++) {
+					int y = top - depth;
+					BlockState state;
+					if (depth == 0)
+						state = wall ? Blocks.DARK_PRISMARINE.defaultBlockState() : Blocks.GLASS.defaultBlockState();
+					else if (depth == Layout.TANK_DEPTH + 2)
+						state = Blocks.PRISMARINE_BRICKS.defaultBlockState();
+					else if (wall)
+						state = depth == 4 && (dx * 7 + dz * 3) % 5 == 0 ? Blocks.SEA_LANTERN.defaultBlockState() : Blocks.PRISMARINE_BRICKS.defaultBlockState();
+					else if (depth == Layout.TANK_DEPTH + 1)
+						state = random.nextFloat() < 0.3F ? Blocks.GRAVEL.defaultBlockState() : Blocks.SAND.defaultBlockState();
+					else
+						state = Blocks.WATER.defaultBlockState();
+					level.setBlock(pos.set(x, y, z), state, 2);
+				}
+				// Prop the wall up where the roof falls away under it
+				if (wall)
+					for (int y = top - Layout.TANK_DEPTH - 3; y > top - Layout.TANK_DEPTH - 20; y--) {
+						if (!level.getBlockState(pos.set(x, y, z)).is(Blocks.WATER))
+							break;
+						level.setBlock(pos, Blocks.PRISMARINE_BRICKS.defaultBlockState(), 2);
+					}
+				else if (Math.abs(dx) > 1 || Math.abs(dz) > 1)
+					decorate(level, pos.set(x, top - Layout.TANK_DEPTH, z), random);
+			}
+		}
+		set(level, chunkBB, center, StrawberrymcModBlocks.PRISMATIC_VAULT.get().defaultBlockState());
+		set(level, chunkBB, layout.runeFrame().below(), Blocks.DARK_PRISMARINE.defaultBlockState());
+		if (chunkBB.isInside(layout.runeFrame()))
+			spawnArenaEntities(level, layout);
+	}
+
+	// The tank's bottom layer of water: seagrass, coral, sea pickles and the odd kelp
+	private static void decorate(WorldGenLevel level, BlockPos.MutableBlockPos pos, RandomSource random) {
+		float roll = random.nextFloat();
+		if (roll < 0.22F) {
+			level.setBlock(pos, Blocks.SEAGRASS.defaultBlockState(), 2);
+		} else if (roll < 0.28F) {
+			level.setBlock(pos, Blocks.TALL_SEAGRASS.defaultBlockState().setValue(net.minecraft.world.level.block.TallSeagrassBlock.HALF,
+				net.minecraft.world.level.block.state.properties.DoubleBlockHalf.LOWER), 2);
+			level.setBlock(pos.move(0, 1, 0), Blocks.TALL_SEAGRASS.defaultBlockState().setValue(net.minecraft.world.level.block.TallSeagrassBlock.HALF,
+				net.minecraft.world.level.block.state.properties.DoubleBlockHalf.UPPER), 2);
+		} else if (roll < 0.34F) {
+			net.minecraft.world.level.block.Block[] corals = {Blocks.TUBE_CORAL, Blocks.BRAIN_CORAL, Blocks.BUBBLE_CORAL, Blocks.FIRE_CORAL, Blocks.HORN_CORAL,
+				Blocks.TUBE_CORAL_FAN, Blocks.BRAIN_CORAL_FAN, Blocks.BUBBLE_CORAL_FAN, Blocks.FIRE_CORAL_FAN, Blocks.HORN_CORAL_FAN};
+			level.setBlock(pos, corals[random.nextInt(corals.length)].defaultBlockState(), 2);
+		} else if (roll < 0.37F) {
+			level.setBlock(pos, Blocks.SEA_PICKLE.defaultBlockState().setValue(net.minecraft.world.level.block.SeaPickleBlock.PICKLES, 1 + random.nextInt(4)), 2);
+		} else if (roll < 0.39F) {
+			int height = 2 + random.nextInt(3);
+			for (int i = 0; i < height; i++)
+				level.setBlock(pos.move(0, i == 0 ? 0 : 1, 0), i == height - 1 ? Blocks.KELP.defaultBlockState() : Blocks.KELP_PLANT.defaultBlockState(), 2);
+		}
+	}
+
+	private static void spawnArenaEntities(WorldGenLevel level, Layout layout) {
+		net.minecraft.server.level.ServerLevel serverLevel = level.getLevel();
+		net.minecraft.world.entity.decoration.ItemFrame frame = new net.minecraft.world.entity.decoration.ItemFrame(serverLevel, layout.runeFrame(), Direction.UP);
+		frame.setItem(new net.minecraft.world.item.ItemStack(io.github.strawberrymc.init.StrawberrymcModItems.PRISMATIC_RUNE.get()), false);
+		((io.github.strawberrymc.custommixin.ItemFrameAccessor) frame).strawberrymc$setFixed(true);
+		frame.setInvulnerable(true);
+		frame.addTag(MonumentArena.RUNE_FRAME_TAG);
+		level.addFreshEntity(frame);
+		RandomSource random = RandomSource.create(layout.arenaCenter().asLong());
+		BlockPos center = layout.arenaCenter();
+		for (int i = 0; i < 9; i++) {
+			net.minecraft.world.entity.EntityType<? extends net.minecraft.world.entity.Mob> type = i < 6 ? net.minecraft.world.entity.EntityType.TROPICAL_FISH
+				: net.minecraft.world.entity.EntityType.COD;
+			net.minecraft.world.entity.Mob fish = type.create(serverLevel, net.minecraft.world.entity.EntitySpawnReason.STRUCTURE);
+			if (fish == null)
+				continue;
+			double angle = random.nextDouble() * Math.PI * 2, distance = 2 + random.nextDouble() * (Layout.ARENA_RADIUS - 4);
+			fish.snapTo(center.getX() + 0.5 + Math.cos(angle) * distance, center.getY() - 2 - random.nextInt(Layout.TANK_DEPTH - 2),
+				center.getZ() + 0.5 + Math.sin(angle) * distance, random.nextFloat() * 360, 0);
+			fish.finalizeSpawn(level, level.getCurrentDifficultyAt(fish.blockPosition()), net.minecraft.world.entity.EntitySpawnReason.STRUCTURE, null);
+			fish.setPersistenceRequired();
+			level.addFreshEntity(fish);
+		}
+	}
+
 	private static void buildSensors(WorldGenLevel level, BoundingBox chunkBB, Layout layout) {
 		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 		for (BlockPos sensor : layout.sensors()) {
@@ -300,6 +399,11 @@ public final class MonumentShell {
 		// The Cracked Prismarine dome hanging from the roof: its radius and how far it hangs down
 		static final double DOME_RADIUS = 3.6;
 		static final int DOME_DEPTH = 3;
+		// The arena's glass circle and the water under it
+		public static final int ARENA_RADIUS = 14;
+		static final int TANK_DEPTH = 7;
+		// How far the arena's centre is from the gazebo's, towards the entrance
+		private static final int ARENA_OFFSET = 25;
 		static final int VENT_DEPTH = 3;
 		static final int PEDESTAL_HEIGHT = 3;
 		// Pedestal spots in the hall (local, double scale, entrance at z=0), one per quadrant
@@ -350,6 +454,23 @@ public final class MonumentShell {
 		// The dome's lowest point, where the jet from the vent hits it
 		public BlockPos domeTip() {
 			return new BlockPos(centerX(), domeTop() - DOME_DEPTH, centerZ());
+		}
+
+		// The middle of the arena's glass floor, where the Prismatic Vault is, level with the gazebo floor
+		public BlockPos arenaCenter() {
+			return world(WIDTH / 2, floorY, WIDTH / 2 - ARENA_OFFSET);
+		}
+
+		// Where the Prismatic Rune's item frame hangs, on a pedestal at the bottom of the tank
+		public BlockPos runeFrame() {
+			return arenaCenter().below(TANK_DEPTH - 1);
+		}
+
+		// Whether pos is on the arena's glass (or just above it)
+		public boolean onArena(net.minecraft.world.phys.Vec3 pos) {
+			BlockPos center = arenaCenter();
+			double dx = pos.x - (center.getX() + 0.5), dz = pos.z - (center.getZ() + 0.5);
+			return dx * dx + dz * dz <= ARENA_RADIUS * ARENA_RADIUS && pos.y >= center.getY() && pos.y <= center.getY() + 6;
 		}
 
 		public List<BlockPos> sensors() {

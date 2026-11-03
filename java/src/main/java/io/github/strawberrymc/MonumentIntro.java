@@ -91,6 +91,11 @@ public class MonumentIntro {
 	// Debug command: /cutscene clear [players] forgets that the players (default: you) have seen the cutscene, so it
 	// plays again the next time they enter a monument. A player inside a monument also gets its roof vent rebuilt, so the
 	// vent cutscene plays again when its Ancient Prismarine is mined
+	// Whether the player is watching a monument cutscene (and so is kept safe)
+	public static boolean isInCutscene(ServerPlayer player) {
+		return isWatchingCutscene(player);
+	}
+
 	private static boolean isWatchingCutscene(@Nullable Entity entity) {
 		if (!(entity instanceof ServerPlayer player))
 			return false;
@@ -132,11 +137,12 @@ public class MonumentIntro {
 		int vents = 0;
 		for (ServerPlayer player : players) {
 			player.setData(SEEN_MONUMENT, false);
-			// The vent cutscene plays once per monument, so rebuild the vent of the monument the player is in
+			io.github.strawberrymc.monument.MonumentQuest.setStage(player, io.github.strawberrymc.monument.MonumentQuest.Stage.NONE, null);
+			// The vent cutscene plays once per monument, so rebuild the vent (and the arena's rune) of the monument the player is in
 			if (io.github.strawberrymc.monument.PrismaticSensors.resetVent(player.level(), player.blockPosition()))
 				vents++;
 		}
-		String reset = vents == 0 ? "" : vents == 1 ? " and reset the monument vent" : " and reset " + vents + " monument vents";
+		String reset = vents == 0 ? "" : vents == 1 ? " and reset the monument's vent and arena" : " and reset " + vents + " monuments' vents and arenas";
 		source.sendSuccess(() -> players.size() == 1
 			? Component.literal("Cleared cutscene(s) for " + players.iterator().next().getName().getString() + reset)
 			: Component.literal("Cleared cutscene(s) for " + players.size() + " players" + reset), true);

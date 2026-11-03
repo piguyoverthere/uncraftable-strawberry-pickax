@@ -109,6 +109,7 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> DEACTIVATED_PRISMATIC_SENSOR;
 	public static final DeferredBlock<Block> ANCIENT_PRISMARINE;
 	public static final DeferredBlock<Block> CRACKED_PRISMARINE;
+	public static final DeferredBlock<Block> PRISMATIC_VAULT;
 	static {
 		CHORINE_ORE = register("chorine_ore", ChorineOreBlock::new);
 		CHORINE_BLOCK = register("chorine_block", ChorineBlockBlock::new);
@@ -195,6 +196,7 @@ public class StrawberrymcModBlocks {
 		DEACTIVATED_PRISMATIC_SENSOR = register("deactivated_prismatic_sensor", DeactivatedPrismaticSensorBlock::new);
 		ANCIENT_PRISMARINE = register("ancient_prismarine", AncientPrismarineBlock::new);
 		CRACKED_PRISMARINE = register("cracked_prismarine", CrackedPrismarineBlock::new);
+		PRISMATIC_VAULT = register("prismatic_vault", PrismaticVaultBlock::new);
 	}
 
 	// Start of user code block custom blocks

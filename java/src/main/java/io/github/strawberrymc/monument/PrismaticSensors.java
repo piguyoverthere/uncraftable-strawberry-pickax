@@ -196,6 +196,7 @@ public class PrismaticSensors {
 		}
 		for (BlockPos lump : layout.lump())
 			level.setBlock(lump, StrawberrymcModBlocks.CRACKED_PRISMARINE.get().defaultBlockState(), Block.UPDATE_ALL);
+		MonumentArena.reset(level, layout);
 		return true;
 	}
 

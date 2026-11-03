@@ -46,7 +46,7 @@ public class VentCutscene {
 	public static void start(BlockPos vent, BlockPos lump) {
 		Minecraft minecraft = Minecraft.getInstance();
 		LocalPlayer player = minecraft.player;
-		if (player == null || active || MonumentCutscene.isActive())
+		if (player == null || active || MonumentCutscene.isActive() || ArenaCutscene.isActive())
 			return;
 		Vec3 ventTop = Vec3.atBottomCenterOf(vent.above());
 		target = ventTop.lerp(Vec3.atCenterOf(lump), 0.5);

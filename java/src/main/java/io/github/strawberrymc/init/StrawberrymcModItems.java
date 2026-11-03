@@ -128,6 +128,9 @@ public class StrawberrymcModItems {
 	public static final DeferredItem<Item> DEACTIVATED_PRISMATIC_SENSOR;
 	public static final DeferredItem<Item> ANCIENT_PRISMARINE;
 	public static final DeferredItem<Item> CRACKED_PRISMARINE;
+	public static final DeferredItem<Item> MONUMENT_KEY;
+	public static final DeferredItem<Item> PRISMATIC_RUNE;
+	public static final DeferredItem<Item> PRISMATIC_VAULT;
 	static {
 		CHORINE = register("chorine", ChorineItem::new);
 		CHORINE_ORE = block(StrawberrymcModBlocks.CHORINE_ORE);
@@ -240,6 +243,9 @@ public class StrawberrymcModItems {
 		DEACTIVATED_PRISMATIC_SENSOR = block(StrawberrymcModBlocks.DEACTIVATED_PRISMATIC_SENSOR);
 		ANCIENT_PRISMARINE = block(StrawberrymcModBlocks.ANCIENT_PRISMARINE);
 		CRACKED_PRISMARINE = block(StrawberrymcModBlocks.CRACKED_PRISMARINE);
+		MONUMENT_KEY = register("monument_key", MonumentKeyItem::new);
+		PRISMATIC_RUNE = register("prismatic_rune", PrismaticRuneItem::new);
+		PRISMATIC_VAULT = block(StrawberrymcModBlocks.PRISMATIC_VAULT);
 	}
 
 	// Start of user code block custom items
