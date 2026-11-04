@@ -4587,6 +4587,40 @@
           "src/main/resources/assets/strawberrymc/models/item/prismatic_vault.json"
         ]
       }
+    },
+    {
+      "name": "CloverMatOnBoneMealSuccess",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clover_mat_on_bone_meal_success",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/io/github/strawberrymc/procedures/CloverMatOnBoneMealSuccessProcedure.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],

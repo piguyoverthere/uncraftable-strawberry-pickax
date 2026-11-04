@@ -70,7 +70,7 @@
     "emittedRedstonePower": {
       "fixedValue": 15.0
     },
-    "colorOnMap": "DEFAULT",
+    "colorOnMap": "FOLIAGE",
     "noteBlockInstrument": "harp",
     "creativePickItem": "",
     "offsetType": "NONE",
@@ -98,7 +98,7 @@
     "unbreakable": false,
     "vanillaToolTier": "NONE",
     "placingCondition": "CloverMatPlacementReturnHandler",
-    "isBonemealable": false,
+    "isBonemealable": true,
     "sensitiveToVibration": false,
     "vibrationalEvents": [],
     "vibrationSensitivityRadius": {
