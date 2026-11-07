@@ -1,0 +1,34 @@
+{
+  "mappings": {
+    "citrine_crystal": {
+      "name": "citrine_crystal",
+      "map": {
+        "crystal": "citrine_crystal"
+      }
+    },
+    "aquamarine_crystal": {
+      "name": "aquamarine_crystal",
+      "map": {
+        "crystal": "aquamarine_crystal"
+      }
+    },
+    "rose_quartz_crystal": {
+      "name": "rose_quartz_crystal",
+      "map": {
+        "crystal": "rose_quartz_crystal"
+      }
+    },
+    "garnet_crystal": {
+      "name": "garnet_crystal",
+      "map": {
+        "crystal": "garnet_crystal"
+      }
+    },
+    "dendrite_crystal": {
+      "name": "dendrite_crystal",
+      "map": {
+        "crystal": "dendrite_crystal"
+      }
+    }
+  }
+}

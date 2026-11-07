@@ -71,8 +71,8 @@ public class StrawberrymcModBiomes {
 
 	private static SurfaceRules.RuleSource injectOverworldSurfaceRules(SurfaceRules.RuleSource currentRuleSource) {
 		List<SurfaceRules.RuleSource> customSurfaceRules = new ArrayList<>();
-		customSurfaceRules.add(
-				anySurfaceRule(ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "crystal_hollows")), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.DIRT.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
+		customSurfaceRules.add(anySurfaceRule(ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "crystal_hollows")), StrawberrymcModBlocks.CRYSTALLINE_CALCITE.get().defaultBlockState(),
+				Blocks.CALCITE.defaultBlockState(), Blocks.CALCITE.defaultBlockState()));
 		customSurfaceRules.add(
 				preliminarySurfaceRule(ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "dry_savanna")), Blocks.COARSE_DIRT.defaultBlockState(), Blocks.SAND.defaultBlockState(), Blocks.GRAVEL.defaultBlockState()));
 		customSurfaceRules.add(preliminarySurfaceRule(ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath("strawberrymc", "clover_glades")), Blocks.GRASS_BLOCK.defaultBlockState(), Blocks.DIRT.defaultBlockState(),

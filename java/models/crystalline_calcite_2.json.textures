@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "name": "default",
+      "map": {
+        "base": "crystalline_calcite_base",
+        "tip": "crystalline_calcite_tip"
+      }
+    }
+  }
+}

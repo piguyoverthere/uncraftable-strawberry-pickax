@@ -1,0 +1,7 @@
+{
+  "type": "neoforge:add_carvers",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "carvers": "strawberrymc:crystal_hollows"
+}

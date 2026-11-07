@@ -69,6 +69,13 @@ public class StrawberrymcModBlocks {
 	public static final DeferredBlock<Block> GARNET_CRYSTAL;
 	public static final DeferredBlock<Block> GARNET_BLOCK;
 	public static final DeferredBlock<Block> CRYSTALLINE_CALCITE;
+	public static final DeferredBlock<Block> CINNABAR;
+	public static final DeferredBlock<Block> CITRINE_BLOCK;
+	public static final DeferredBlock<Block> CITRINE_CRYSTAL;
+	public static final DeferredBlock<Block> AQUAMARINE_BLOCK;
+	public static final DeferredBlock<Block> AQUAMARINE_CRYSTAL;
+	public static final DeferredBlock<Block> ROSE_QUARTZ_BLOCK;
+	public static final DeferredBlock<Block> ROSE_QUARTZ_CRYSTAL;
 	public static final DeferredBlock<Block> GLOWROOT_TUBER_STONE;
 	public static final DeferredBlock<Block> GLOWROOT;
 	public static final DeferredBlock<Block> GLOWROOT_DUMMY_SPAWNER;
@@ -156,6 +163,13 @@ public class StrawberrymcModBlocks {
 		GARNET_CRYSTAL = register("garnet_crystal", GarnetCrystalBlock::new);
 		GARNET_BLOCK = register("garnet_block", GarnetBlockBlock::new);
 		CRYSTALLINE_CALCITE = register("crystalline_calcite", CrystallineCalciteBlock::new);
+		CINNABAR = register("cinnabar", CinnabarBlock::new);
+		CITRINE_BLOCK = register("citrine_block", CitrineBlockBlock::new);
+		CITRINE_CRYSTAL = register("citrine_crystal", CitrineCrystalBlock::new);
+		AQUAMARINE_BLOCK = register("aquamarine_block", AquamarineBlockBlock::new);
+		AQUAMARINE_CRYSTAL = register("aquamarine_crystal", AquamarineCrystalBlock::new);
+		ROSE_QUARTZ_BLOCK = register("rose_quartz_block", RoseQuartzBlockBlock::new);
+		ROSE_QUARTZ_CRYSTAL = register("rose_quartz_crystal", RoseQuartzCrystalBlock::new);
 		GLOWROOT_TUBER_STONE = register("glowroot_tuber_stone", GlowrootTuberStoneBlock::new);
 		GLOWROOT = register("glowroot", GlowrootBlock::new);
 		GLOWROOT_DUMMY_SPAWNER = register("glowroot_dummy_spawner", GlowrootDummySpawnerBlock::new);

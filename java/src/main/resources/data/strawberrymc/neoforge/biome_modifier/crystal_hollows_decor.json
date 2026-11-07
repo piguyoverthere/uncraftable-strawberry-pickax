@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "strawberrymc:crystal_hollows",
+  "features": [
+    "strawberrymc:crystal_column",
+    "strawberrymc:calcite_mountain"
+  ],
+  "step": "underground_structures"
+}

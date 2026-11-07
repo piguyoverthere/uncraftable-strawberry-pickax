@@ -2,7 +2,7 @@
   "_fv": 89,
   "_type": "block",
   "definition": {
-    "texture": "placeholder",
+    "texture": "dendrite_block",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
@@ -85,7 +85,7 @@
     "jumpFactor": 1.0,
     "reactionToPushing": "NORMAL",
     "isNotColidable": false,
-    "soundOnStep": "GROUND",
+    "soundOnStep": "GRAVEL",
     "isCustomSoundType": false,
     "breakSound": "",
     "fallSound": "",

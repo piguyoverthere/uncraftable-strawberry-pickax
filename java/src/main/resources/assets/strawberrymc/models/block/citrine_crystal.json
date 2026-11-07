@@ -1,0 +1,8 @@
+{
+  "parent": "strawberrymc:custom/crystal_cluster",
+  "textures": {
+    "all": "strawberrymc:block/citrine_crystal",
+    "particle": "strawberrymc:block/citrine_crystal",
+    "crystal": "strawberrymc:block/citrine_crystal"
+  }
+}

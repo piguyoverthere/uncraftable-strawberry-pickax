@@ -77,6 +77,13 @@ public class StrawberrymcModItems {
 	public static final DeferredItem<Item> GARNET_NODULE;
 	public static final DeferredItem<Item> GARNET;
 	public static final DeferredItem<Item> CRYSTALLINE_CALCITE;
+	public static final DeferredItem<Item> CINNABAR;
+	public static final DeferredItem<Item> CITRINE_BLOCK;
+	public static final DeferredItem<Item> CITRINE_CRYSTAL;
+	public static final DeferredItem<Item> AQUAMARINE_BLOCK;
+	public static final DeferredItem<Item> AQUAMARINE_CRYSTAL;
+	public static final DeferredItem<Item> ROSE_QUARTZ_BLOCK;
+	public static final DeferredItem<Item> ROSE_QUARTZ_CRYSTAL;
 	public static final DeferredItem<Item> RECOVERY_PEARL;
 	public static final DeferredItem<Item> GLOWROOT_TUBER;
 	public static final DeferredItem<Item> GLOWROOT_TUBER_STONE;
@@ -192,6 +199,13 @@ public class StrawberrymcModItems {
 		GARNET_NODULE = register("garnet_nodule", GarnetNoduleItem::new);
 		GARNET = register("garnet", GarnetItem::new);
 		CRYSTALLINE_CALCITE = block(StrawberrymcModBlocks.CRYSTALLINE_CALCITE);
+		CINNABAR = block(StrawberrymcModBlocks.CINNABAR);
+		CITRINE_BLOCK = block(StrawberrymcModBlocks.CITRINE_BLOCK);
+		CITRINE_CRYSTAL = block(StrawberrymcModBlocks.CITRINE_CRYSTAL);
+		AQUAMARINE_BLOCK = block(StrawberrymcModBlocks.AQUAMARINE_BLOCK);
+		AQUAMARINE_CRYSTAL = block(StrawberrymcModBlocks.AQUAMARINE_CRYSTAL);
+		ROSE_QUARTZ_BLOCK = block(StrawberrymcModBlocks.ROSE_QUARTZ_BLOCK);
+		ROSE_QUARTZ_CRYSTAL = block(StrawberrymcModBlocks.ROSE_QUARTZ_CRYSTAL);
 		RECOVERY_PEARL = register("recovery_pearl", RecoveryPearlItem::new);
 		GLOWROOT_TUBER = register("glowroot_tuber", GlowrootTuberItem::new);
 		GLOWROOT_TUBER_STONE = block(StrawberrymcModBlocks.GLOWROOT_TUBER_STONE);

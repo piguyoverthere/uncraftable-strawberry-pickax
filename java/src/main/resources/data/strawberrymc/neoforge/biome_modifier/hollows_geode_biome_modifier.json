@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "strawberrymc:crystal_hollows",
+  "features": "strawberrymc:hollows_geode",
+  "step": "local_modifications"
+}

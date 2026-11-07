@@ -1,0 +1,8 @@
+{
+  "parent": "strawberrymc:custom/crystal_cluster",
+  "textures": {
+    "all": "strawberrymc:block/aquamarine_crystal",
+    "particle": "strawberrymc:block/aquamarine_crystal",
+    "crystal": "strawberrymc:block/aquamarine_crystal"
+  }
+}

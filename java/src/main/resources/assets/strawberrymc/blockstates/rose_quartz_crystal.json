@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "strawberrymc:block/rose_quartz_crystal"
+    },
+    "facing=east": {
+      "model": "strawberrymc:block/rose_quartz_crystal",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "strawberrymc:block/rose_quartz_crystal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "strawberrymc:block/rose_quartz_crystal",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "strawberrymc:block/rose_quartz_crystal",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "strawberrymc:block/rose_quartz_crystal",
+      "x": 90
+    }
+  }
+}

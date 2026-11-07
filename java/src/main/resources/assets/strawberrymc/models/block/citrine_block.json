@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/citrine_block",
+    "particle": "strawberrymc:block/citrine_block"
+  }
+}

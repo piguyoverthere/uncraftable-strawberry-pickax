@@ -1572,10 +1572,94 @@
       }
     },
     {
+      "name": "HollowsScatteredCrystals",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_scattered_crystals",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_scattered_crystals.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_scattered_crystals_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_scattered_crystals.json"
+        ]
+      }
+    },
+    {
+      "name": "HollowsCrystalPatches",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_crystal_patches",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_crystal_patches.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_crystal_patches_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_crystal_patches.json"
+        ]
+      }
+    },
+    {
+      "name": "HollowsHangingCrystals",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_hanging_crystals",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_hanging_crystals.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_hanging_crystals_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_hanging_crystals.json"
+        ]
+      }
+    },
+    {
+      "name": "HollowsCrystals",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_crystals",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_crystals.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_crystals_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_crystals.json"
+        ]
+      }
+    },
+    {
+      "name": "HollowsPool",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_pool",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_pool.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_pool_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_pool.json"
+        ]
+      }
+    },
+    {
+      "name": "HollowsGeode",
+      "type": "feature",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hollows_geode",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/strawberrymc/worldgen/configured_feature/hollows_geode.json",
+          "src/main/resources/data/strawberrymc/neoforge/biome_modifier/hollows_geode_biome_modifier.json",
+          "src/main/resources/data/strawberrymc/worldgen/placed_feature/hollows_geode.json"
+        ]
+      }
+    },
+    {
       "name": "CrystallineCalcite",
       "type": "block",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "crystalline_calcite",
       "metadata": {
         "files": [
@@ -1584,7 +1668,128 @@
           "src/main/resources/assets/strawberrymc/models/block/crystalline_calcite.json",
           "src/main/resources/data/strawberrymc/loot_table/blocks/crystalline_calcite.json",
           "src/main/resources/assets/strawberrymc/blockstates/crystalline_calcite.json",
-          "src/main/resources/assets/strawberrymc/items/crystalline_calcite.json"
+          "src/main/resources/assets/strawberrymc/items/crystalline_calcite.json",
+          "src/main/resources/assets/strawberrymc/models/block/crystalline_calcite_2.json",
+          "src/main/resources/assets/strawberrymc/models/block/crystalline_calcite_3.json"
+        ]
+      }
+    },
+    {
+      "name": "Cinnabar",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cinnabar",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/CinnabarBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/cinnabar.json",
+          "src/main/resources/assets/strawberrymc/models/block/cinnabar.json",
+          "src/main/resources/assets/strawberrymc/models/item/cinnabar.json",
+          "src/main/resources/assets/strawberrymc/items/cinnabar.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/cinnabar.json"
+        ]
+      }
+    },
+    {
+      "name": "CitrineBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "citrine_block",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/CitrineBlockBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/citrine_block.json",
+          "src/main/resources/assets/strawberrymc/models/block/citrine_block.json",
+          "src/main/resources/assets/strawberrymc/models/item/citrine_block.json",
+          "src/main/resources/assets/strawberrymc/items/citrine_block.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/citrine_block.json"
+        ]
+      }
+    },
+    {
+      "name": "CitrineCrystal",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "citrine_crystal",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/CitrineCrystalBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/citrine_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/block/citrine_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/item/citrine_crystal.json",
+          "src/main/resources/assets/strawberrymc/items/citrine_crystal.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/citrine_crystal.json"
+        ]
+      }
+    },
+    {
+      "name": "AquamarineBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aquamarine_block",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/AquamarineBlockBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/aquamarine_block.json",
+          "src/main/resources/assets/strawberrymc/models/block/aquamarine_block.json",
+          "src/main/resources/assets/strawberrymc/models/item/aquamarine_block.json",
+          "src/main/resources/assets/strawberrymc/items/aquamarine_block.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/aquamarine_block.json"
+        ]
+      }
+    },
+    {
+      "name": "AquamarineCrystal",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aquamarine_crystal",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/AquamarineCrystalBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/aquamarine_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/block/aquamarine_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/item/aquamarine_crystal.json",
+          "src/main/resources/assets/strawberrymc/items/aquamarine_crystal.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/aquamarine_crystal.json"
+        ]
+      }
+    },
+    {
+      "name": "RoseQuartzBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rose_quartz_block",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/RoseQuartzBlockBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/rose_quartz_block.json",
+          "src/main/resources/assets/strawberrymc/models/block/rose_quartz_block.json",
+          "src/main/resources/assets/strawberrymc/models/item/rose_quartz_block.json",
+          "src/main/resources/assets/strawberrymc/items/rose_quartz_block.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/rose_quartz_block.json"
+        ]
+      }
+    },
+    {
+      "name": "RoseQuartzCrystal",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rose_quartz_crystal",
+      "metadata": {
+        "files": [
+          "src/main/java/io/github/strawberrymc/block/RoseQuartzCrystalBlock.java",
+          "src/main/resources/assets/strawberrymc/blockstates/rose_quartz_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/block/rose_quartz_crystal.json",
+          "src/main/resources/assets/strawberrymc/models/item/rose_quartz_crystal.json",
+          "src/main/resources/assets/strawberrymc/items/rose_quartz_crystal.json",
+          "src/main/resources/data/strawberrymc/loot_table/blocks/rose_quartz_crystal.json"
         ]
       }
     },
@@ -2476,6 +2681,66 @@
         "return_type": "logic",
         "files": [
           "src/main/java/io/github/strawberrymc/procedures/CrystalHollowsGeneratorProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "CalciteMountainGeneration",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "calcite_mountain_generation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/io/github/strawberrymc/procedures/CalciteMountainGenerationProcedure.java"
+        ]
+      }
+    },
+    {
+      "name": "CrystalColumnGeneration",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crystal_column_generation",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ],
+        "files": [
+          "src/main/java/io/github/strawberrymc/procedures/CrystalColumnGenerationProcedure.java"
         ]
       }
     },
@@ -5011,6 +5276,11 @@
     ],
     "BIOMES:minecraft:has_structure/jungle_temple": [
       "~MontaneJungle@CUSTOM:MontaneJungle"
+    ],
+    "BLOCKS:mod:hollows_ground": [
+      "CUSTOM:CrystallineCalcite",
+      "Blocks.CALCITE",
+      "TAG:minecraft:lush_ground_replaceable"
     ]
   },
   "tab_element_order": {},
@@ -5075,7 +5345,7 @@
       "entity.strawberrymc.palm_chest_boat": "Palm Boat with Chest",
       "item.strawberrymc.dendrite_crystal": "Dendrite Crystal",
       "item.strawberrymc.dendrite_block": "Dendrite Block",
-      "item.strawberrymc.garnet_crystal": "Dendrite Crystal",
+      "item.strawberrymc.garnet_crystal": "Garnet Crystal",
       "item.strawberrymc.garnet_block": "Garnet Block",
       "item.strawberrymc.garnet_nodule": "Garnet Nodule",
       "item.strawberrymc.garnet": "Garnet",
@@ -5184,7 +5454,25 @@
       "item.strawberrymc.cracked_prismarine": "Cracked Prismarine",
       "item.strawberrymc.monument_key": "Monument Key",
       "item.strawberrymc.prismatic_rune": "Prismatic Rune",
-      "item.strawberrymc.prismatic_vault": "Prismatic Vault"
+      "item.strawberrymc.prismatic_vault": "Prismatic Vault",
+      "item.strawberrymc.cinnabar": "Cinnabar",
+      "block.strawberrymc.cinnabar": "Cinnabar",
+      "item.strawberrymc.citrine_block": "Block of Citrine",
+      "block.strawberrymc.citrine_block": "Block of Citrine",
+      "item.strawberrymc.citrine_crystal": "Citrine Crystal",
+      "block.strawberrymc.citrine_crystal": "Citrine Crystal",
+      "item.strawberrymc.aquamarine_block": "Block of Aquamarine",
+      "block.strawberrymc.aquamarine_block": "Block of Aquamarine",
+      "item.strawberrymc.aquamarine_crystal": "Aquamarine Crystal",
+      "block.strawberrymc.aquamarine_crystal": "Aquamarine Crystal",
+      "item.strawberrymc.rose_quartz_block": "Block of Rose Quartz",
+      "block.strawberrymc.rose_quartz_block": "Block of Rose Quartz",
+      "item.strawberrymc.rose_quartz_crystal": "Rose Quartz Crystal",
+      "block.strawberrymc.rose_quartz_crystal": "Rose Quartz Crystal",
+      "block.strawberrymc.garnet_crystal": "Garnet Crystal",
+      "block.strawberrymc.dendrite_crystal": "Dendrite Crystal",
+      "block.strawberrymc.garnet_block": "Garnet Block",
+      "block.strawberrymc.dendrite_block": "Dendrite Block"
     }
   },
   "metadata": {

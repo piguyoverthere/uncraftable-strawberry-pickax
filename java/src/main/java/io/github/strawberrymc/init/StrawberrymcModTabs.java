@@ -83,6 +83,10 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModBlocks.PALM_BUTTON.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.GARNET_BLOCK.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.CRYSTALLINE_CALCITE.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CINNABAR.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CITRINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.AQUAMARINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.ROSE_QUARTZ_BLOCK.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.VOIDSTONE.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.JUNIPER_LOG.get().asItem());
 			tabData.accept(StrawberrymcModBlocks.JUNIPER_WOOD.get().asItem());
@@ -108,6 +112,13 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.GARNET_NODULE.get());
 			tabData.accept(StrawberrymcModItems.GARNET.get());
 			tabData.accept(StrawberrymcModBlocks.CRYSTALLINE_CALCITE.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CINNABAR.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CITRINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CITRINE_CRYSTAL.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.AQUAMARINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.AQUAMARINE_CRYSTAL.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.ROSE_QUARTZ_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.ROSE_QUARTZ_CRYSTAL.get().asItem());
 			tabData.accept(StrawberrymcModItems.GLOWROOT_TUBER.get());
 			tabData.accept(StrawberrymcModBlocks.GLOWROOT.get().asItem());
 			tabData.accept(StrawberrymcModItems.CLOVER_CLUFF.get());
@@ -151,6 +162,10 @@ public class StrawberrymcModTabs {
 			tabData.accept(StrawberrymcModItems.IRON_BOW.get());
 		} else if (tabData.getTabKey() == CreativeModeTabs.COLORED_BLOCKS) {
 			tabData.accept(StrawberrymcModBlocks.GARNET_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CINNABAR.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.CITRINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.AQUAMARINE_BLOCK.get().asItem());
+			tabData.accept(StrawberrymcModBlocks.ROSE_QUARTZ_BLOCK.get().asItem());
 		} else if (tabData.getTabKey() == CreativeModeTabs.OP_BLOCKS) {
 			if (tabData.hasPermissions()) {
 				tabData.accept(StrawberrymcModBlocks.GLOWROOT_DUMMY_SPAWNER.get().asItem());

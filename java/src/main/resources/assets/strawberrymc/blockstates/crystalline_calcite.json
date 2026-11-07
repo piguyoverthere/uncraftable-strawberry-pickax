@@ -1,7 +1,175 @@
 {
   "variants": {
-    "": {
-      "model": "strawberrymc:block/crystalline_calcite"
-    }
+    "facing=up": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite"
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2"
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3"
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "y": 270
+      }
+    ],
+    "facing=down": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 180,
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 180,
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 180,
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 180,
+        "y": 270
+      }
+    ],
+    "facing=north": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 90
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 90,
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "strawberrymc:block/crystalline_calcite",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_2",
+        "x": 90,
+        "y": 270
+      },
+      {
+        "model": "strawberrymc:block/crystalline_calcite_3",
+        "x": 90,
+        "y": 270
+      }
+    ]
   }
 }

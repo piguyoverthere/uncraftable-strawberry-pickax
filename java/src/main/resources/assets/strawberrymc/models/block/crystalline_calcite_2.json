@@ -1,0 +1,9 @@
+{
+  "parent": "strawberrymc:custom/crystalline_calcite_2",
+  "textures": {
+    "all": "strawberrymc:block/crystalline_calcite_base",
+    "particle": "strawberrymc:block/crystalline_calcite_base",
+    "base": "strawberrymc:block/crystalline_calcite_base",
+    "tip": "strawberrymc:block/crystalline_calcite_tip"
+  }
+}

@@ -3,9 +3,9 @@
   "_type": "biome",
   "definition": {
     "name": "Crystal Hollows",
-    "groundBlock": "Blocks.GRASS",
-    "undergroundBlock": "Blocks.DIRT#0",
-    "underwaterBlock": "Blocks.GRAVEL",
+    "groundBlock": "CUSTOM:CrystallineCalcite",
+    "undergroundBlock": "Blocks.CALCITE",
+    "underwaterBlock": "Blocks.CALCITE",
     "ambientSound": "",
     "additionsSound": "",
     "music": "",
@@ -76,6 +76,14 @@
     "spawnBastionRemnant": false,
     "spawnEndCity": false,
     "spawnRuinedPortal": "NONE",
-    "spawnEntries": []
+    "spawnEntries": [],
+    "airColor": {
+      "value": -15002074,
+      "falpha": 0.0
+    },
+    "fogColor": {
+      "value": -15002074,
+      "falpha": 0.0
+    }
   }
 }

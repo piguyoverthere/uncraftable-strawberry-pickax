@@ -66,6 +66,8 @@ public class StrawberrymcMod {
 		SetTemperatureBiomeModifier.init(modEventBus);
 		VoidTerrainPack.init(modEventBus);
 		AbyssLavaFlood.init(modEventBus);
+		CrystalHollowsCarver.init(modEventBus);
+		CrystalHollowsDecor.init(modEventBus);
 		MonumentIntro.init(modEventBus);
 		MonumentPuzzlesPack.init(modEventBus);
 		io.github.strawberrymc.comscript.ComScript.init(modEventBus);

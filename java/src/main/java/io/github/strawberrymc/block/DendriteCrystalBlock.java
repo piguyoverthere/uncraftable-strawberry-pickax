@@ -20,12 +20,15 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import java.util.function.Function;
+
 public class DendriteCrystalBlock extends Block implements SimpleWaterloggedBlock {
 	public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+	private final Function<BlockState, VoxelShape> shapes = this.makeShapes();
 
 	public DendriteCrystalBlock(BlockBehaviour.Properties properties) {
-		super(properties.sound(SoundType.GRAVEL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(properties.sound(SoundType.AMETHYST_CLUSTER).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
 	}
 
@@ -36,12 +39,30 @@ public class DendriteCrystalBlock extends Block implements SimpleWaterloggedBloc
 
 	@Override
 	public int getLightDampening(BlockState state) {
-		return propagatesSkylightDown(state) ? 0 : 1;
+		return 0;
 	}
 
 	@Override
 	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
+	}
+
+	private Function<BlockState, VoxelShape> makeShapes() {
+		return this.getShapeForEachState(state -> {
+			return switch (state.getValue(FACING)) {
+				case NORTH -> box(3, 3, 3, 13, 13, 16);
+				case EAST -> box(0, 3, 3, 13, 13, 13);
+				case WEST -> box(3, 3, 3, 16, 13, 13);
+				case UP -> box(3, 0, 3, 13, 13, 13);
+				case DOWN -> box(3, 3, 3, 13, 16, 13);
+				default -> box(3, 3, 0, 13, 13, 13);
+			};
+		}, WATERLOGGED);
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return shapes.apply(state);
 	}
 
 	@Override
