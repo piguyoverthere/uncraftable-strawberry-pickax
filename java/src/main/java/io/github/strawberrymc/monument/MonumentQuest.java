@@ -109,8 +109,10 @@ public class MonumentQuest {
 	}
 
 	// Reaching the arena first tells the player the rune is locked away; the key objective comes after they've read it
-	public static final String LOCKED_NOTICE = "Access to the Prismatic Rune seems to be locked...\nThe vault needs a key.";
+	public static final String LOCKED_NOTICE = "You cannot reach the Monument Key right now.\nThe vault needs a key.";
 	public static final int NOTICE_TICKS = 110;
+	// Blocks from the objective point at which the quest is abandoned
+	public static final double ABORT_DISTANCE = 400;
 	// Players reading the locked notice, between reaching the arena and getting the key objective
 	private static final java.util.Set<UUID> READING = new java.util.HashSet<>();
 
@@ -140,6 +142,11 @@ public class MonumentQuest {
 				|| MonumentIntro.isInCutscene(player))
 			return;
 		State state = player.getData(STATE);
+		// Wandering too far from the objective drops the quest and its ping; it starts over at the next monument entered
+		if (state.stage() != Stage.NONE && player.position().distanceToSqr(objectivePos(state)) > ABORT_DISTANCE * ABORT_DISTANCE) {
+			setStage(player, Stage.NONE, null);
+			return;
+		}
 		if (state.stage() == Stage.KEY)
 			return;
 		MonumentShell.Layout layout = PrismaticSensors.monumentAt(player.level(), player.blockPosition());
@@ -177,12 +184,15 @@ public class MonumentQuest {
 		List<Ping> pings = new ArrayList<>();
 		// While the locked notice is up there's no objective or ping
 		boolean reading = READING.contains(player.getUUID());
-		if (!reading && state.stage() == Stage.ARENA)
-			pings.add(new Ping("objective", Vec3.atBottomCenterOf(state.arena()).add(0, 2.5, 0), OBJECTIVE_COLOR, 1, true, "Arena"));
-		else if (!reading && state.stage() == Stage.KEY)
-			pings.add(new Ping("objective", Vec3.atBottomCenterOf(state.vent()).add(0, 2.5, 0), OBJECTIVE_COLOR, 1, true, "Key"));
+		if (!reading && state.stage() != Stage.NONE)
+			pings.add(new Ping("objective", objectivePos(state), OBJECTIVE_COLOR, 1, true, state.stage() == Stage.ARENA ? "Arena" : "Key"));
 		pings.addAll(DEBUG_PINGS.getOrDefault(player.getUUID(), new LinkedHashMap<>()).values());
 		PacketDistributor.sendToPlayer(player, new SyncQuest(reading ? "" : state.stage().objective, announce, pings, notice));
+	}
+
+	// Where the objective's ping sits: above the arena's vault or the gazebo vent
+	private static Vec3 objectivePos(State state) {
+		return Vec3.atBottomCenterOf(state.stage() == Stage.ARENA ? state.arena() : state.vent()).add(0, 2.5, 0);
 	}
 
 	// ---- /ping ----
@@ -297,7 +307,7 @@ public class MonumentQuest {
 		State state = player.getData(STATE);
 		StringBuilder text = new StringBuilder("Objective: " + (state.stage() == Stage.NONE ? "none" : state.stage().objective));
 		if (state.stage() != Stage.NONE) {
-			Vec3 pos = Vec3.atBottomCenterOf(state.stage() == Stage.ARENA ? state.arena() : state.vent()).add(0, 2.5, 0);
+			Vec3 pos = objectivePos(state);
 			text.append(" -> ").append(format(pos)).append(" (").append((int) player.position().distanceTo(pos)).append(" blocks)");
 		}
 		for (Ping ping : pings(player).values())

@@ -26,18 +26,6 @@
           0
         ]
       }
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "#minecraft:dirt",
-        "offset": [
-          0,
-          -1,
-          0
-        ]
-      }
     }
   ]
 }

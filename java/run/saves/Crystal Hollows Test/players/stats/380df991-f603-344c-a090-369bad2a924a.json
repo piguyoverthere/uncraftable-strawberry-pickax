@@ -1,0 +1,21 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:sprint_one_cm": 3097,
+      "minecraft:time_since_rest": 52906,
+      "minecraft:walk_one_cm": 3797,
+      "minecraft:total_world_time": 30576,
+      "minecraft:leave_game": 2,
+      "minecraft:fly_one_cm": 56115,
+      "minecraft:crouch_one_cm": 43,
+      "minecraft:sneak_time": 241,
+      "minecraft:play_time": 26453,
+      "minecraft:jump": 40,
+      "minecraft:time_since_death": 26453
+    },
+    "minecraft:used": {
+      "strawberrymc:crystalline_calcite": 51
+    }
+  },
+  "DataVersion": 4790
+}

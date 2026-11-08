@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/cinnabar",
+    "particle": "strawberrymc:block/cinnabar"
+  }
+}

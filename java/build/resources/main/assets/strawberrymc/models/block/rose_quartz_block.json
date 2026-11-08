@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "strawberrymc:block/rose_quartz_block",
+    "particle": "strawberrymc:block/rose_quartz_block"
+  }
+}

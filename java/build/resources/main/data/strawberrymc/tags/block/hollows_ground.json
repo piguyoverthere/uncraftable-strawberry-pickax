@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:calcite",
+    "strawberrymc:crystalline_calcite",
+    {
+      "id": "#minecraft:lush_ground_replaceable",
+      "required": false
+    }
+  ]
+}

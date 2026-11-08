@@ -1,18 +1,18 @@
 {
   "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 9486,
+      "minecraft:walk_one_cm": 172,
+      "minecraft:swim_one_cm": 21041,
+      "minecraft:total_world_time": 66664,
+      "minecraft:walk_under_water_one_cm": 41274,
+      "minecraft:sneak_time": 81,
+      "minecraft:play_time": 4743,
+      "minecraft:jump": 12,
+      "minecraft:time_since_death": 4743
+    },
     "minecraft:used": {
       "strawberrymc:prismatic_vault": 2
-    },
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 7072,
-      "minecraft:walk_one_cm": 172,
-      "minecraft:swim_one_cm": 14286,
-      "minecraft:total_world_time": 44870,
-      "minecraft:walk_under_water_one_cm": 20059,
-      "minecraft:sneak_time": 81,
-      "minecraft:play_time": 3536,
-      "minecraft:jump": 7,
-      "minecraft:time_since_death": 3536
     }
   },
   "DataVersion": 4790

@@ -8,6 +8,8 @@
     "water_color": 4159204
   },
   "attributes": {
+    "minecraft:visual/sky_color": 1775142,
+    "minecraft:visual/fog_color": 1775142,
     "minecraft:visual/water_fog_color": 329011
   },
   "spawners": {

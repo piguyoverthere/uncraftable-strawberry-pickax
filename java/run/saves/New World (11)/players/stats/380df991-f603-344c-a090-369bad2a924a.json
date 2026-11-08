@@ -1,0 +1,38 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 30770,
+      "minecraft:walk_one_cm": 6084,
+      "minecraft:leave_game": 2,
+      "minecraft:walk_under_water_one_cm": 37288,
+      "minecraft:play_time": 20587,
+      "minecraft:jump": 32,
+      "minecraft:time_since_death": 15374,
+      "minecraft:drop": 8,
+      "minecraft:sprint_one_cm": 2389,
+      "minecraft:swim_one_cm": 148,
+      "minecraft:total_world_time": 36397,
+      "minecraft:fly_one_cm": 162203,
+      "minecraft:walk_on_water_one_cm": 42,
+      "minecraft:crouch_one_cm": 322,
+      "minecraft:sneak_time": 792,
+      "minecraft:deaths": 1
+    },
+    "minecraft:dropped": {
+      "minecraft:arrow": 72
+    },
+    "minecraft:used": {
+      "minecraft:bone_meal": 23,
+      "strawberrymc:garnet_block": 8,
+      "strawberrymc:oasis_spawner": 3,
+      "minecraft:end_stone": 4,
+      "minecraft:fletching_table": 2,
+      "strawberrymc:scripter": 1,
+      "strawberrymc:echowood_sapling": 4
+    },
+    "minecraft:picked_up": {
+      "minecraft:arrow": 63
+    }
+  },
+  "DataVersion": 4790
+}
